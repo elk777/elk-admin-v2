@@ -1,0 +1,21 @@
+
+// sidebar
+$sideBarWidth: 200px;
+$sideBarBg: #ffffff;
+$sideBarDeadBg: #304156;
+$sideBarDarkBg: #212121;
+
+$sideBarText: #303133;
+$siderBarDeadText: #ffffff;
+
+
+
+
+:export {
+    sideBarWidth: $sideBarWidth;
+    sideBarBg: $sideBarBg;
+    sideBarDeadBg: $sideBarDeadBg;
+    sideBarText: $sideBarText;
+    siderBarDeadText: $siderBarDeadText;
+    sideBarDarkBg: $sideBarDarkBg
+}

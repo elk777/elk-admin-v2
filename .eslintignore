@@ -1,0 +1,9 @@
+# eslint 检查排除文件
+
+build/*.js
+src/assets
+public
+node_moduels
+dist
+*.js
+*.vue

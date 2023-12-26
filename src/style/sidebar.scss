@@ -1,0 +1,63 @@
+#app {
+    /* 侧边menu 样式 */
+    .sidebar-vertical-container {
+        width: $sideBarWidth;
+        transition: width .28s, background-color .3s;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 1001;
+        -webkit-box-shadow: 2px 0px 6px rgba(0, 21, 41, .35);
+        box-shadow: 2px 0px 6px rgba(0, 21, 41, .35);
+        .el-menu {
+            border: none;
+        }
+        /* element滚动条组件 隐藏水平滚动条 */
+        .scrollbar-wrapper {
+            overflow-x: hidden !important;
+            height: 100%;
+            .el-scrollbar__view {
+                .el-menu {
+                    text-align: left;
+                }
+            }
+            .el-scrollbar__bar.is-vertical {
+                right: 0px;
+            }
+            .is-horizontal {
+                display: none;
+            }
+        }
+    }
+    /* 侧边展开：nav和appmian 边距 */
+    .main-container {
+        height: 100vh;
+        overflow: auto;
+        transition: margin-left .28s;
+        margin-left: $sideBarWidth;
+        position: relative;
+    }
+
+    /* 侧边折叠后：手动隐藏title和箭头 */
+    .el-menu--collapse {
+        .el-submenu__title span {
+            display: none;
+        }
+
+        .el-submenu__icon-arrow {
+            display: none;
+        }
+    }
+
+    /* 侧边折叠后 宽度 */
+    .sidebar-collapse {
+        width: 65px !important;
+    }
+
+    /* 侧边折叠后 nav和appmain 左侧边距 */
+    .main-collapse {
+        margin-left: 65px;
+    }
+
+}

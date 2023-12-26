@@ -1,0 +1,84 @@
+// dark
+$darkBg: #121212;
+$darkColor: #ffffff;
+
+$darBoderBG: #212121;
+
+$darkBgSiderBg: #212121;
+
+$darkBoderColor: #333333;
+
+/* 定义暗黑主题色样式表 */
+html.dark {
+
+    // header
+    .navbar-container {
+        background-color: $darkBgSiderBg !important;
+        color: #ffffff !important;
+
+        .svg-icon {
+            color: #ffffff !important;
+        }
+    }
+
+    .el-dropdown-menu {
+        background-color: $darkBg !important;
+        border: 1px solid $darkBoderColor !important;
+
+        & :hover {
+            background-color: $darkBg !important;
+        }
+        .popper__arrow {
+            border-bottom-color: $darkBoderColor !important
+        }
+        .popper__arrow::after {
+            border-bottom-color: $darkBg !important
+        }
+        .el-dropdown-menu__item--divided {
+            border-top: $darkBoderColor !important;
+
+        }
+        .el-dropdown-menu__item--divided::before {
+            background-color: $darkBoderColor !important;
+        }
+    }
+
+    // tagsview
+    .tags-container {
+        background-color: $darkBg !important;
+        border-bottom: 1px solid $darkBoderColor !important;
+
+        .el-tabs--card>.el-tabs__header .el-tabs__nav {
+            border: 1px solid $darkBoderColor !important;
+        }
+
+        .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+            border-bottom-color: $darkBoderColor !important;
+        }
+
+        .el-tabs--card>.el-tabs__header .el-tabs__item {
+            border-left: 1px solid $darkBoderColor !important;
+        }
+    }
+
+    .hover-effect {
+        &:hover {
+            background-color: rgba(18, 18, 18, 1) !important;
+        }
+    }
+
+    // siderbar
+    .sidebar-container {
+        background-color: $darkBgSiderBg !important;
+
+        .el-menu {
+            background-color: $darkBgSiderBg !important;
+        }
+
+    }
+
+    // appmain
+    .app-main {
+        background-color: $darkBg !important;
+    }
+}
