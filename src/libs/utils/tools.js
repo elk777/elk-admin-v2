@@ -2,7 +2,7 @@
  * @Author: elk 1185725133@qq.com
  * @Date: 2023-11-30 14:48:24
  * @LastEditors: elk 1185725133@qq.com
- * @LastEditTime: 2023-12-25 15:12:01
+ * @LastEditTime: 2023-12-27 13:56:31
  * @FilePath: /vue2_project/src/libs/utils/tools.js
  * @Description: 工具类函数库
  */
@@ -45,11 +45,12 @@ const resetForm = ($this, form) => {
  *      @data : 需要改造的data数据
  * @return {*}
  */
-const handleTree = (data) => {
+const handleTree = (data, key) => {
+	let id = key || 'menuId';
 	let cloneData = JSON.parse(JSON.stringify(data));
 	const tree = cloneData.filter((father) => {
 		let branch = cloneData.filter((child) => {
-			return father.menuId === child.parentId;
+			return father[id] === child.parentId;
 		});
 		branch.length > 0 ? (father.children = branch) : "";
 		return father.parentId === 0;

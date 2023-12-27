@@ -92,11 +92,10 @@ export default {
 		/* 修改当前表单 */
 		handleUpdate(row) {
 			let menudialog = this.$refs.menudialog;
-			menudialog.title = "修改菜单";
-			menudialog.open = true;
 			getMenu(row.menuId).then((res) => {
-				const { data } = res;
-				menudialog.form = data;
+				menudialog.title = "修改菜单";
+				menudialog.open = true;
+				menudialog.form = res.data;
 			});
 		},
 		/* 删除当前表单 */
@@ -120,8 +119,3 @@ export default {
 	},
 };
 </script>
-
-<style lang="scss" scoped>
-.menu-container {
-}
-</style>

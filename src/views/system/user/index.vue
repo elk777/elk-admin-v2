@@ -25,12 +25,12 @@
 					show-overflow-tooltip
 				></el-table-column>
 				<el-table-column
-					prop="roleName"
+					prop="roleIds"
 					label="关联角色"
 					align="center"
 					show-overflow-tooltip
 				></el-table-column>
-				<el-table-column prop="deptName" label="部门" align="center" show-overflow-tooltip></el-table-column>
+				<el-table-column prop="deptIds" label="部门" align="center" show-overflow-tooltip></el-table-column>
 				<el-table-column prop="phone" label="手机号" align="center" show-overflow-tooltip></el-table-column>
 				<el-table-column prop="status" label="用户状态" align="center">
 					<template slot-scope="scope">
@@ -111,8 +111,7 @@ export default {
 			getUser(row.userId).then( res => {
 				userdialog.title = "修改用户";
 				userdialog.open = true;
-				const { data } = res;
-				userdialog.form = data;
+				userdialog.form = res.data;
 			})
 		},
 		/* 删除 */

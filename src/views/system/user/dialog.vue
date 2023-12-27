@@ -1,6 +1,6 @@
 <template>
 	<el-dialog class="mainDialog" :title="title" :visible.sync="open" width="700px" append-to-body>
-		<el-form ref="form" :model="form" :rules="rules" label-width="100px">
+		<el-form ref="form" :model="form" :rules="rules" label-width="85px">
 			<el-row>
 				<el-col :span="12">
 					<el-form-item label="用户名称" prop="userName">
@@ -13,13 +13,30 @@
 					</el-form-item>
 				</el-col>
 				<el-col :span="12">
-					<el-form-item label="关联角色" prop="roleName">
-						<el-input v-model="form.roleName" placeholder="请输入关联角色" />
+					<el-form-item label="关联角色" prop="roleIds">
+						<el-select style="width: 100%" v-model="form.roleIds" placeholder="请选择关联角色">
+							<el-option
+								v-for="role in roles"
+								:key="role.roleName"
+								:label="role.roleName"
+								:value="role.roleId"
+							>
+							</el-option>
+						</el-select>
 					</el-form-item>
 				</el-col>
 				<el-col :span="12">
-					<el-form-item label="部门" prop="deptName">
-						<el-input v-model="form.deptName" placeholder="请输入部门" />
+					<el-form-item label="部门" prop="deptIds">
+						<!-- <el-input v-model="form.deptName" placeholder="请输入部门" /> -->
+						<el-cascader
+							style="width: 100%"
+							:value="form.deptIds"
+							:props="{ checkStrictly: true, value: 'deptId', label: 'deptName' }"
+							:options="depts"
+							@change="handelCascader"
+							clearable
+							placeholder="请选择部门"
+						></el-cascader>
 					</el-form-item>
 				</el-col>
 				<el-col :span="12">
@@ -34,7 +51,10 @@
 				</el-col>
 				<el-col :span="12">
 					<el-form-item label="性别" prop="sex">
-						<el-input v-model="form.sex" placeholder="请输入性别" />
+						<el-select style="width: 100%" v-model="form.sex" placeholder="请选择性别">
+							<el-option v-for="sex in dics" :key="sex.dicName" :label="sex.label" :value="sex.value">
+							</el-option>
+						</el-select>
 					</el-form-item>
 				</el-col>
 				<el-col :span="12">
@@ -62,7 +82,10 @@
 </template>
 
 <script>
-import { addUser,updateUser } from '@/api/system/user';
+import { addUser, updateUser } from "@/api/system/user";
+import { listRole } from "@/api/system/role";
+import { listDept } from "@/api/system/dept";
+import { getDic } from "@/api/system/dic";
 export default {
 	name: "UserDialog",
 	data() {
@@ -76,20 +99,33 @@ export default {
 				password: [{ required: true, message: "请输入用户密码", trigger: "blur" }],
 			},
 			loading: false,
+			roles: [],
+			depts: [],
+			dics: [],
 		};
 	},
 
-	mounted() {},
+	mounted() {
+		this.getAllList();
+	},
 
 	methods: {
+		async getAllList() {
+			const roleData = await listRole();
+			const deptData = await listDept();
+			const dicData = await getDic("sys_user_sex");
+			this.roles = roleData.data;
+			this.depts = this.$handleTree(deptData.data, "deptId");
+			this.dics = dicData.data.dicData;
+		},
 		/* 重置form */
 		reset() {
 			this.form = {
 				userId: null,
 				userName: null,
 				nickName: null,
-				roleName: null,
-				deptName: null,
+				roleIds: null,
+				deptIds: null,
 				phone: null,
 				email: null,
 				sex: null,
@@ -99,6 +135,10 @@ export default {
 			};
 			this.$resetForm(this, "form");
 		},
+		handelCascader(val) {
+			console.log("用户管理：上级菜单选择事件数值：", val);
+			this.form.deptIds = [...val];
+		},
 		/* 提交表单取消按钮 */
 		cancel() {
 			this.open = false;
@@ -106,33 +146,33 @@ export default {
 		},
 		/* 提交表单确定按钮 */
 		submitForm() {
-			console.log("form", this.form);
-			this.$refs['form'].validate( (valid) => {
+			console.log("用户管理：form", this.form);
+			this.$refs["form"].validate((valid) => {
 				this.loading = true;
-				if(valid) {
-					if(this.form.userId != null) {
-						updateUser(this.form).then( res => {
+				if (valid) {
+					if (this.form.userId != null) {
+						updateUser(this.form).then((res) => {
 							this.loading = false;
 							this.$message({
-								type: 'success',
-								message: '修改成功'
+								type: "success",
+								message: "修改成功",
 							});
 							this.open = false;
 							this.$emit("getList");
-						})
+						});
 					} else {
-						addUser(this.form).then( res => {
+						addUser(this.form).then((res) => {
 							this.loading = false;
 							this.$message({
-								type: 'success',
-								message: '新增成功'
+								type: "success",
+								message: "新增成功",
 							});
 							this.open = false;
 							this.$emit("getList");
-						})
+						});
 					}
 				}
-			})
+			});
 		},
 	},
 };

@@ -5,23 +5,31 @@
 				<el-input
 					style="max-width: 180px; margin-right: 10px"
 					v-model="val"
-					placeholder="请输入字典名称"
+					placeholder="请输入部门名称"
 				></el-input>
 				<el-button type="primary" icon="el-icon-search">查询</el-button>
-				<el-button type="success" icon="el-icon-folder-add" @click="handelAdd">新增字典</el-button>
+				<el-button type="success" icon="el-icon-folder-add" @click="handelAdd">新增部门</el-button>
 			</div>
 
-			<el-table v-loading="loading" :data="deptList">
-				<el-table-column prop="dicName" label="字典名称" align="center" show-overflow-tooltip />
-				<el-table-column prop="dicType" label="字典类型" align="center" show-overflow-tooltip />
-				<el-table-column prop="status" label="字典状态" align="center">
+			<el-table
+				v-loading="loading"
+				:data="deptList"
+				row-key="deptId"
+				:tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+			>
+				<el-table-column prop="deptName" label="部门名称" align="center" show-overflow-tooltip />
+				<el-table-column prop="leader" label="负责人" align="center" show-overflow-tooltip />
+				<el-table-column prop="phone" label="手机号" align="center" show-overflow-tooltip />
+				<el-table-column prop="email" label="邮箱" align="center" show-overflow-tooltip />
+				<el-table-column prop="orderNum" label="排序" align="center" show-overflow-tooltip />
+				<el-table-column prop="status" label="部门状态" align="center">
 					<template slot-scope="scope">
 						<el-tag :type="scope.row.status ? 'default' : 'danger'">{{
 							scope.row.status ? "启用" : "停用"
 						}}</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column prop="remark" label="用户描述" align="center" show-overflow-tooltip />
+				<el-table-column prop="remark" label="部门描述" align="center" show-overflow-tooltip />
 				<el-table-column label="操作" align="center" width="130">
 					<template slot-scope="scope">
 						<el-button type="text" @click="handleUpdate(scope.row)">修改</el-button>
@@ -30,13 +38,13 @@
 				</el-table-column>
 			</el-table>
 
-			<Pagination
+			<!-- <Pagination
 				v-show="total > 0"
 				:total="total"
 				:page.sync="queryParams.pageNum"
 				:size.sync="queryParams.pageSize"
 				@pagination="getList"
-			/>
+			/> -->
 
 			<DeptDialog ref="deptdialog" @getList="getList" />
 		</el-card>
@@ -45,6 +53,7 @@
 
 <script>
 import DeptDialog from "./dialog.vue";
+import { listDept, getDept, delDept } from "@/api/system/dept";
 export default {
 	name: "Dept",
 	components: {
@@ -68,12 +77,49 @@ export default {
 	},
 
 	methods: {
-		getList() {},
-		handelAdd() {},
-		handleUpdate() {},
-		handleDelete() {},
+		getList() {
+			this.loading = true;
+			listDept(this.queryParams).then((res) => {
+				this.loading = false;
+				const tree = this.$handleTree(res.data, "deptId");
+				this.deptList = tree;
+				this.$refs.deptdialog.MenuOptions = tree;
+				console.log("部门树形结构", tree);
+				this.total = res.data.length;
+			});
+		},
+		handelAdd() {
+			const deptdialog = this.$refs.deptdialog;
+			deptdialog.reset();
+			deptdialog.title = "新增部门";
+			deptdialog.open = true;
+		},
+		handleUpdate(row) {
+			const deptdialog = this.$refs.deptdialog;
+			getDept(row.deptId).then((res) => {
+				deptdialog.title = "修改部门";
+				deptdialog.open = true;
+				deptdialog.form = res.data;
+			});
+		},
+		handleDelete(row) {
+			this.$confirm(`是否删除部门名称为${row.deptName}的数据`, "警告", {
+				confirmButtonText: "确定",
+				cancelButtonText: "取消",
+				type: "waring",
+			})
+				.then(() => {
+					return delDept(row.deptId);
+				})
+				.then(() => {
+					this.getList();
+					this.$message({
+						message: "删除成功",
+						type: "success",
+					});
+				});
+		},
 	},
 };
 </script>
 
-<style lang="scss" scoped></style>

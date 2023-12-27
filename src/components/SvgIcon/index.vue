@@ -1,3 +1,6 @@
+
+<!-- svg图标 公共组件 -->
+
 <template>
     <!-- <div :style="styleExternalIcon" class="svg-icon svg-external-icon" /> -->
     <svg

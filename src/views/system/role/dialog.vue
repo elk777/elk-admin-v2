@@ -69,10 +69,6 @@ export default {
 				orderNum: [{ required: true, message: "请输入排序", trigger: "blur" }],
 			},
 			menuData: [],
-			// menuProps: {
-			// 	label: "menuName",
-			// 	children: "children",
-			// },
 		};
 	},
 
