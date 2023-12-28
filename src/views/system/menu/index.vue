@@ -18,7 +18,11 @@
 				:tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
 			>
 				<el-table-column prop="menuName" label="菜单名称" align="center" width="160"></el-table-column>
-				<el-table-column prop="icon" label="图标" align="center"></el-table-column>
+				<el-table-column prop="icon" label="图标" align="center">
+					<template slot-scope="scope">
+						<svg-icon :icon-class="scope.row.icon" />
+					</template>
+				</el-table-column>
 				<el-table-column prop="orderNum" label="排序" align="center"></el-table-column>
 				<el-table-column prop="perms" label="权限标识" align="center"></el-table-column>
 				<el-table-column prop="component" label="组件路径" align="center"></el-table-column>

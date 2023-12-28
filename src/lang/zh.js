@@ -11,6 +11,7 @@ export default {
         Role: '角色管理',
         Dept: '部门管理',
         Dic: '字典管理',
+        fun: "功能",
         monitor: '系统监控',
         Online: '在线用户'
     },

@@ -9,7 +9,7 @@
 							:value="form.menuId"
 							:props="{ checkStrictly: true, value: 'menuId', label: 'menuName' }"
 							:options="MenuOptions"
-                            @change="handelCascader"
+							@change="handelCascader"
 							clearable
 							placeholder="请选择上级菜单"
 						></el-cascader>
@@ -25,7 +25,10 @@
 					</el-form-item>
 				</el-col>
 				<el-col :span="24" v-if="form.menuType != 'A'">
-					<el-form-item label="菜单图标" prop="icon"> </el-form-item>
+					<el-form-item label="菜单图标" prop="icon">
+						<IconSelector v-if="form.icon" :iconName="form.icon" />
+						<IconSelector v-else />
+					</el-form-item>
 				</el-col>
 				<el-col :span="12">
 					<el-form-item label="菜单名称" prop="menuName">
@@ -100,8 +103,12 @@
 
 <script>
 import { addMenu, updateMenu } from "@/api/system/menu";
+import IconSelector from "@/components/IconSelector";
 export default {
 	name: "MenuDialog",
+	components: {
+		IconSelector,
+	},
 	data() {
 		return {
 			title: "",
@@ -118,7 +125,7 @@ export default {
 	},
 
 	mounted() {
-		this.reset();
+		// this.reset();
 	},
 
 	methods: {
@@ -146,14 +153,14 @@ export default {
 			this.open = false;
 			this.reset();
 		},
-        /* 上级菜单选择事件 */
-        handelCascader(val) {
-            console.log("上级菜单选择事件数值1：",val);
-            this.form.parentId = val[0];
-        },
+		/* 上级菜单选择事件 */
+		handelCascader(val) {
+			console.log("上级菜单选择事件数值1：", val);
+			this.form.parentId = val[0];
+		},
 		/* 提交表单事件 */
 		submitForm() {
-            console.log("form", this.form);
+			console.log("form", this.form);
 			this.$refs["form"].validate((valid) => {
 				this.loading = true;
 				if (valid) {

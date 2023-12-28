@@ -10,6 +10,7 @@ export default {
         Role: 'systemRole',
         Dept: 'systemDept',
         Dic: 'systemDic',
+        fun: "function",
         monitor: 'monitor',
         Online: 'monitorOnline'
     },
