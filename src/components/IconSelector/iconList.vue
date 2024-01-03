@@ -19,8 +19,13 @@ export default {
 	data() {
 		return {
 			icons: [],
-			color: this.$store.getters.themeConfig.themeColor,
+			// color: this.$store.getters.themeConfig.themeColor,
 		};
+	},
+	computed: {
+		color() {
+			return this.$store.getters.themeConfig.themeColor
+		}
 	},
 
 	mounted() {

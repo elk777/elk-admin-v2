@@ -1,16 +1,11 @@
 <template>
 	<div class="icon-selector">
-		<el-input
-			v-model="iconInput"
-			placeholder="请选择图标"
-			@focus="focusInput"
-			@blur="blurInput"
-		>
+		<el-input v-model="iconInput" placeholder="请选择图标" @focus="focusInput" @blur="blurInput">
 			<template slot="prepend">
 				<svg-icon :icon-class="iconSvg" />
 			</template>
 		</el-input>
-		<el-popover trigger="click" placement="bottom" title="请选择图标" v-model="open">
+		<el-popover trigger="manual" placement="bottom" title="请选择图标" v-model="open" visible-arrow>
 			<template>
 				<IconList @getIcon="getIcon" />
 			</template>
@@ -70,4 +65,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.icon-selector {
+    & ::v-deep .el-popover {
+        margin-top: 10px;
+    }
+
+}
+</style>

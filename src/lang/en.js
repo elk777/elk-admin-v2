@@ -11,6 +11,13 @@ export default {
         Dept: 'systemDept',
         Dic: 'systemDic',
         fun: "function",
+        Editor: "Editor编辑器",
+        Print: "print",
+        Cropper: "cropper",
+        Preview: "preview",
+        Qrcode: "qrcode",
+        Uploading: "uploading",
+        Download: "download",
         monitor: 'monitor',
         Online: 'monitorOnline'
     },
