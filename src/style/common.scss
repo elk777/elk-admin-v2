@@ -28,6 +28,16 @@
 		border-radius: 5px;
 		padding: 5px;
 	}
+
+	.avatar-upload-preview {
+		position: absolute;
+		top: 50%;
+		transform: translate(50%, -50%);
+		width: 150px;
+		height: 150px;
+		box-shadow: 0 0 4px #ccc;
+		overflow: hidden;
+	}
 }
 body {
 	.el-dialog__wrapper {

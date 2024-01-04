@@ -19,7 +19,6 @@ export default {
 	data() {
 		return {
 			icons: [],
-			// color: this.$store.getters.themeConfig.themeColor,
 		};
 	},
 	computed: {

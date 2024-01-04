@@ -1,15 +1,19 @@
 <template>
     <div class="layout-container">
-        <el-card shadow="hover" class="layout-container-auto">
-            图片裁剪
+        <el-card shadow="hover" header="图片裁剪">
+           <VueCropper />
         </el-card>
     </div>
 </template>
 
 <script>
+import VueCropper from '@/components/Cropper';
+
 export default {
     name: 'Cropper',
-
+    components: {
+        VueCropper
+    },
     data() {
         return {
             
