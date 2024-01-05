@@ -1,6 +1,6 @@
 <template>
 	<div class="layout-container">
-		<el-card shadow="hover" header="打印演示">
+		<el-card shadow="hover" header="print-js打印演示">
 			<div style="margin-bottom: 15px">
 				<el-table id="print-table" :data="tableData" border>
 					<el-table-column prop="date" label="日期" width="180" align="center"> </el-table-column>

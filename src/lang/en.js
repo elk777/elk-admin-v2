@@ -11,7 +11,7 @@ export default {
         Dept: 'systemDept',
         Dic: 'systemDic',
         fun: "function",
-        Editor: "Editor编辑器",
+        Editor: "Editor",
         Print: "print",
         Cropper: "cropper",
         Preview: "preview",

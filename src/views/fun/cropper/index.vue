@@ -1,6 +1,6 @@
 <template>
     <div class="layout-container">
-        <el-card shadow="hover" header="图片裁剪">
+        <el-card shadow="hover" header="vue-cropper图片裁剪">
            <VueCropper />
         </el-card>
     </div>

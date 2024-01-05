@@ -2,7 +2,7 @@
  * @Author: elk 1185725133@qq.com
  * @Date: 2023-11-30 14:48:24
  * @LastEditors: elk 1185725133@qq.com
- * @LastEditTime: 2023-12-27 13:56:31
+ * @LastEditTime: 2024-01-05 16:53:00
  * @FilePath: /vue2_project/src/libs/utils/tools.js
  * @Description: 工具类函数库
  */
@@ -46,7 +46,7 @@ const resetForm = ($this, form) => {
  * @return {*}
  */
 const handleTree = (data, key) => {
-	let id = key || 'menuId';
+	let id = key || "menuId";
 	let cloneData = JSON.parse(JSON.stringify(data));
 	const tree = cloneData.filter((father) => {
 		let branch = cloneData.filter((child) => {
@@ -58,4 +58,14 @@ const handleTree = (data, key) => {
 	return tree !== "" ? tree : data;
 };
 
-export { formatI18n, regexMatch, resetForm, handleTree };
+/**
+ * @description: get 通用下载方法
+ * @return {*}
+ */
+const download = (fileName) => {
+	window.location.href = `${process.env.VUE_APP_BASE_API}/common/download?fileName=${encodeURI(
+		fileName
+	)}&delete=true`;
+};
+
+export { formatI18n, regexMatch, resetForm, handleTree, download };
