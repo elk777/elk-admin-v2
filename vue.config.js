@@ -34,15 +34,21 @@ module.exports = {
 		open: true,
 		// webSocketServer: true,
 		proxy: {
-			//
 			[process.env.VUE_APP_BASE_API]: {
 				target: process.env.VUE_APP_BASE_URL, //代理的地址
 				changeOrigin: true, // 是否允许跨域
-				// secure: false,
 				pathRewrite: {
 					// 路径重写`
 					// '/dev-api': ''
 					["^" + process.env.VUE_APP_BASE_API]: "",
+				},
+			},
+			[process.env.VUE_APP_BASE_FILE_URL + process.env.VUE_APP_BASE_API]: {
+				target: process.env.VUE_APP_BASE_FILE_URL, //代理的文件地址
+				changeOrigin: true, // 是否允许跨域
+				pathRewrite: {
+					// 路径重写`
+					["^" + process.env.VUE_APP_BASE_FILE_URL]: "",
 				},
 			},
 			// disableHostCheck: true,
