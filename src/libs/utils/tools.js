@@ -2,7 +2,7 @@
  * @Author: elk 1185725133@qq.com
  * @Date: 2023-11-30 14:48:24
  * @LastEditors: elk 1185725133@qq.com
- * @LastEditTime: 2024-01-05 16:53:00
+ * @LastEditTime: 2024-01-11 15:08:26
  * @FilePath: /vue2_project/src/libs/utils/tools.js
  * @Description: 工具类函数库
  */
@@ -59,7 +59,7 @@ const handleTree = (data, key) => {
 };
 
 /**
- * @description: get 通用下载方法
+ * @description: 通用url地址下载方法
  * @return {*}
  */
 const download = (fileName) => {
@@ -68,4 +68,31 @@ const download = (fileName) => {
 	)}&delete=true`;
 };
 
-export { formatI18n, regexMatch, resetForm, handleTree, download };
+/**
+ * @description: 转base64格式
+ * @param
+ *      @file : 文件
+ * @return {*}
+ */
+
+const getBase64 = (file) => {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		let fileResult = "";
+		reader.readAsDataURL(file);
+		// 开始转
+		reader.onload = () => {
+			fileResult = reader.result;
+		};
+		// 成功
+		reader.onloadend = () => {
+			resolve(fileResult);
+		};
+		// 失败
+		reader.onerror = (error) => {
+			reject(error);
+		};
+	});
+}
+
+export { formatI18n, regexMatch, resetForm, handleTree, download, getBase64 };

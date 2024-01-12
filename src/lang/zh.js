@@ -16,7 +16,7 @@ export default {
         Cropper: "图片裁剪",
         Preview: "图片预览",
         Qrcode: "二维码生成",
-        Uploading: "大文件上传",
+        Uploading: "文件上传",
         Download: "文件下载",
 		monitor: "系统监控",
 		Online: "在线用户",

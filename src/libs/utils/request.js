@@ -14,7 +14,7 @@ const service = axios.create({
 service.interceptors.request.use(
 	(config) => {
 		let baseUrl = config.baseUrl;
-        console.log("config", config);
+        // console.log("config", config);
         /* 根据接口传递baseUrl参数去配置对应的后端接口域名 */
 		switch (baseUrl) {
 			case "file":

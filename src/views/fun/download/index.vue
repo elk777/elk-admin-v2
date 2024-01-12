@@ -50,7 +50,7 @@ export default {
 		downloadURL() {
 			downloadURL().then((res) => {
 				console.log("文件地址", res);
-				window.location.href = "http://localhost:5001" + res;
+				window.location.href = "http://localhost:5001" + res.data;
 			});
 		},
 		/* base64流下载 */

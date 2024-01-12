@@ -4,6 +4,9 @@ const apis = {
 	downloadData: "/downloadData",
 	downloadURL: "/downloadURL",
 	downloadBase64: "/downloadBase64",
+	uploadFormData: "/upload/formdata",
+	uploadBase64: "/upload/base64",
+	uploadMulti: "/upload/multifile",
 };
 /* 文件流下载 */
 const downloadData = (data) => {
@@ -11,7 +14,7 @@ const downloadData = (data) => {
 		url: apis.downloadData,
 		method: "post",
 		responseType: "blob",
-		baseUrl: 'file',
+		baseUrl: "file",
 		data,
 	});
 };
@@ -20,7 +23,7 @@ const downloadURL = (param) => {
 	return request({
 		url: apis.downloadURL,
 		method: "get",
-		baseUrl: 'file',
+		baseUrl: "file",
 		param,
 	});
 };
@@ -30,10 +33,39 @@ const downloadBase64 = (data) => {
 		url: apis.downloadBase64,
 		method: "post",
 		responseType: "blob",
-		baseUrl: 'file',
+		baseUrl: "file",
 		data,
 	});
 };
 
+/* fromdata 自定义文件上传 */
+const uploadFormData = (data) => {
+	console.log("fromdata上传", data);
+	return request({
+		url: apis.uploadFormData,
+		method: "post",
+		baseUrl: "file",
+		data,
+	});
+};
+/* base64 自定义文件上传 */
+const uploadBase64 = (data) => {
+	console.log("base64上传", data);
+	return request({
+		url: apis.uploadBase64,
+		method: "post",
+		baseUrl: "file",
+		data,
+	});
+};
+/* 多文件 自定义上传 */
+const uploadMulti = (data) => {
+	return request({
+		url: apis.uploadMulti,
+		method: "post",
+		baseUrl: "file",
+		data,
+	});
+};
 
-export { downloadData, downloadURL, downloadBase64 };
+export { downloadData, downloadURL, downloadBase64, uploadFormData, uploadBase64, uploadMulti };
