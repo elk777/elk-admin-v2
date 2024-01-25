@@ -1,3 +1,11 @@
+/*
+ * @Author: elk 1185725133@qq.com
+ * @Date: 2023-05-26 16:57:52
+ * @LastEditors: elk 1185725133@qq.com
+ * @LastEditTime: 2024-01-25 09:26:42
+ * @FilePath: /vue2_project/src/libs/utils/request.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 // axios的二次封装 https://www.axios-http.cn/
 
 import axios from "axios";
@@ -71,6 +79,7 @@ service.interceptors.response.use(
 		return res;
 	},
 	(error) => {
+		console.log("统一错误");
 		// 不同的msg响应 对应的处理
 		console.log("err" + error);
 		let { message } = error;

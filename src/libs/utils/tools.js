@@ -2,10 +2,11 @@
  * @Author: elk 1185725133@qq.com
  * @Date: 2023-11-30 14:48:24
  * @LastEditors: elk 1185725133@qq.com
- * @LastEditTime: 2024-01-11 15:08:26
+ * @LastEditTime: 2024-01-22 09:39:37
  * @FilePath: /vue2_project/src/libs/utils/tools.js
  * @Description: 工具类函数库
  */
+import SparkMD5 from "spark-md5";
 
 /**
  * @description: 格式化 国际化
@@ -71,10 +72,9 @@ const download = (fileName) => {
 /**
  * @description: 转base64格式
  * @param
- *      @file : 文件
+ *      @file : 文件对象
  * @return {*}
  */
-
 const getBase64 = (file) => {
 	return new Promise((resolve, reject) => {
 		const reader = new FileReader();
@@ -93,6 +93,26 @@ const getBase64 = (file) => {
 			reject(error);
 		};
 	});
-}
-
-export { formatI18n, regexMatch, resetForm, handleTree, download, getBase64 };
+};
+/**
+ * @description: 根据spark-MD5 生成文件hash值
+ * @param
+ *      @file : 文件对象
+ * @return {*}
+ */
+const getFileMD5 = (file) => {
+	return new Promise((resolve, reject) => {
+		const spark = new SparkMD5.ArrayBuffer();
+		const fileReader = new FileReader();
+		fileReader.readAsArrayBuffer(file);
+		fileReader.onload = () => {
+			spark.append(fileReader.result);
+			resolve(spark.end());
+		};
+		// 失败
+		fileReader.onerror = (error) => {
+			reject(error);
+		};
+	});
+};
+export { formatI18n, regexMatch, resetForm, handleTree, download, getBase64, getFileMD5 };
