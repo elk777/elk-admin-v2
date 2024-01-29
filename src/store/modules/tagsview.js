@@ -46,10 +46,10 @@ const mutations = {
             经过排查发现是 TagsView组件中el-tab-pane for循环 key使用的index会出现，换成其他唯一标识即可
     */
     DEL_VISITED_VIEW: (state, view) => {
-        state.visitedViews.splice(state.visitedViews.indexOf(view.name), 1);
+        state.visitedViews.splice(state.visitedViews.indexOf(view), 1);
     },
     DEL_CACHE_VIEW: (state, view) => {
-        state.cacheViews.splice(state.cacheViews.indexOf(view.name), 1);
+        state.cacheViews.splice(state.cacheViews.indexOf(view), 1);
     },
     /* 移除其他visited：将这个view和固定在标签「affix为true」的过滤出来并重新赋值给visitedViews即可 */
     DEL_OTHER_VISITED_VIEW: (state, view) => {

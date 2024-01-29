@@ -42,8 +42,8 @@
 				<el-table-column prop="remark" label="用户描述" align="center" show-overflow-tooltip></el-table-column>
 				<el-table-column label="操作" align="center" width="130">
 					<template slot-scope="scope">
-						<el-button type="text" @click="handleUpdate(scope.row)">修改</el-button>
-						<el-button type="text" @click="handleDelete(scope.row)">删除</el-button>
+						<el-button :disabled="scope.row.userName === 'admin'" type="text" @click="handleUpdate(scope.row)">修改</el-button>
+						<el-button :disabled="scope.row.userName === 'admin'" type="text" @click="handleDelete(scope.row)">删除</el-button>
 					</template>
 				</el-table-column>
 			</el-table>

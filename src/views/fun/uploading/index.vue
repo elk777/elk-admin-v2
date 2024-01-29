@@ -332,7 +332,7 @@ export default {
 					this.$refs.uploadmulti.clearFiles();
 				});
 		},
-		/* 多文件上传及进度展示 自定义 */
+		/* 多文件上传展示进度 自定义 */
 		onUploadMultiProgress(fileList) {
 			const _files = fileList.map((item) => {
 				let formdata = new FormData();

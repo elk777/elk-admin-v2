@@ -40,7 +40,7 @@ module.exports = [
 		url: "vue-elk-admin/system/dic.*",
 		type: "get",
 		response: (config) => {
-			console.log("config", config);
+			// console.log("config", config);
 			const id = config.url.match(/dic\/([^&#]+)/)[1];
 			const data = dics.find((item) => item.dicId == id || item.dicType == id);
 			return {

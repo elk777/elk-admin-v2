@@ -87,7 +87,7 @@ module.exports = [
         type: 'delete',
         response: config => {
             const id = config.url.match(/deluser\/([^&#]+)/)[1];
-            const index = users.indexOf(users.find((item) => item.userId === data.userId));
+            const index = users.indexOf(users.find((item) => item.userId === id));
             users.splice(index, 1);
             return {
 				code: 200,

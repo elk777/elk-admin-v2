@@ -1,6 +1,6 @@
 <template>
 	<div class="menu-container layout-container">
-		<el-card shadow="hover" class="layout-container-auto">
+		<el-card shadow="hover" style="overflow-y: auto; min-height: 100%;">
 			<div class="title-search mb15">
 				<el-input
 					style="max-width: 180px; margin-right: 10px"
@@ -17,7 +17,7 @@
 				row-key="menuId"
 				:tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
 			>
-				<el-table-column prop="menuName" label="菜单名称" align="center" width="160"></el-table-column>
+				<el-table-column prop="menuName" label="菜单名称" align="left" width="160"></el-table-column>
 				<el-table-column prop="icon" label="图标" align="center">
 					<template slot-scope="scope">
 						<svg-icon :icon-class="scope.row.icon" />

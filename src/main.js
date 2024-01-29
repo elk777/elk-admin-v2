@@ -18,6 +18,10 @@ import ElementUI from "element-ui";
 import "@/style/element-variables.scss";
 // import 'element-ui/lib/theme-chalk/index.css';
 
+// 全局注册自定义指令
+import directive from "./directive";
+Vue.use(directive);
+
 // 全局注册 消息提示框
 Vue.prototype.msgSuccess = function (msg) {
 	this.$message({ showClose: true, message: msg, type: "success" });

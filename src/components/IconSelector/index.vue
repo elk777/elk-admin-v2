@@ -67,9 +67,8 @@ export default {
 
 <style lang="scss" scoped>
 .icon-selector {
-    & ::v-deep .el-popover {
-        margin-top: 10px;
-    }
-
+	& ::v-deep .el-popover {
+		margin-top: 10px;
+	}
 }
 </style>

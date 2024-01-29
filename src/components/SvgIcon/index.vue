@@ -5,14 +5,14 @@
 		<use :xlink:href="iconName" />
 	</svg>
 </template>
- 
+
 <script>
 export default {
 	name: "SvgIcon",
 	props: {
 		iconClass: {
-			type: String,
-			required: true,
+			type: [String, null],
+			// required: true,
 		},
 		className: {
 			type: String,
@@ -27,14 +27,16 @@ export default {
 			return "svg-icon";
 		},
 		iconName() {
-			return `#icon-${this.iconClass}`;
+			if (this.iconClass) {
+				return `#icon-${this.iconClass}`;
+			}
 		},
-		styleExternalIcon() {
-			return {
-				mask: `url(${this.iconClass}) no-repeat 50% 50%`,
-				"-webkit-mask": `url(${this.iconClass}) no-repeat 50% 50%`,
-			};
-		},
+		// styleExternalIcon() {
+		// 	return {
+		// 		mask: `url(${this.iconClass}) no-repeat 50% 50%`,
+		// 		"-webkit-mask": `url(${this.iconClass}) no-repeat 50% 50%`,
+		// 	};
+		// },
 	},
 };
 </script>

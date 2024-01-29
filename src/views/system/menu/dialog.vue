@@ -162,8 +162,8 @@ export default {
 		submitForm() {
 			console.log("form", this.form);
 			this.$refs["form"].validate((valid) => {
-				this.loading = true;
 				if (valid) {
+					this.loading = true;
 					if (this.form.menuId != null || undefined) {
 						updateMenu(this.form).then((res) => {
 							this.loading = false;

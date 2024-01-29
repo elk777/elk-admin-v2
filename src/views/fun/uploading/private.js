@@ -2,7 +2,7 @@
  * @Author: elk 1185725133@qq.com
  * @Date: 2024-01-19 16:15:39
  * @LastEditors: elk 1185725133@qq.com
- * @LastEditTime: 2024-01-25 09:51:38
+ * @LastEditTime: 2024-01-25 11:27:13
  * @FilePath: /vue2_project/src/views/fun/uploading/index.js
  * @Description: 文件上传组件「uploading」 私有方法
  */

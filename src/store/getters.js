@@ -9,6 +9,7 @@ export default {
     name: state => state.user.name,
     avatar: state => state.user.avatar,
     roles: state => state.user.roles,
+    permissions: state => state.user.permissions,
     sidebarRouters: state => state.permission.sidebarRouters,
     themeConfig: state => state.themeconfig.themeConfig,
     languageType: state => state.toolsmenu.languageType,
