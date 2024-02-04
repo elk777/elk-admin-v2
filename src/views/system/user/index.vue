@@ -7,8 +7,14 @@
 					v-model="val"
 					placeholder="请输入用户名称"
 				></el-input>
-				<el-button type="primary" icon="el-icon-search">查询</el-button>
-				<el-button type="success" icon="el-icon-folder-add" @click="handelAdd">新增用户</el-button>
+				<el-button v-permission="['system:user:query']" type="primary" icon="el-icon-search">查询</el-button>
+				<el-button
+					v-permission="['system:user:add']"
+					type="success"
+					icon="el-icon-folder-add"
+					@click="handelAdd"
+					>新增用户</el-button
+				>
 			</div>
 
 			<el-table v-loading="loading" :data="userList">
@@ -24,12 +30,7 @@
 					align="center"
 					show-overflow-tooltip
 				></el-table-column>
-				<el-table-column
-					prop="roleIds"
-					label="关联角色"
-					align="center"
-					show-overflow-tooltip
-				></el-table-column>
+				<el-table-column prop="roleIds" label="关联角色" align="center" show-overflow-tooltip></el-table-column>
 				<el-table-column prop="deptIds" label="部门" align="center" show-overflow-tooltip></el-table-column>
 				<el-table-column prop="phone" label="手机号" align="center" show-overflow-tooltip></el-table-column>
 				<el-table-column prop="status" label="用户状态" align="center">
@@ -42,8 +43,20 @@
 				<el-table-column prop="remark" label="用户描述" align="center" show-overflow-tooltip></el-table-column>
 				<el-table-column label="操作" align="center" width="130">
 					<template slot-scope="scope">
-						<el-button :disabled="scope.row.userName === 'admin'" type="text" @click="handleUpdate(scope.row)">修改</el-button>
-						<el-button :disabled="scope.row.userName === 'admin'" type="text" @click="handleDelete(scope.row)">删除</el-button>
+						<el-button
+							v-permission="['system:user:edit']"
+							:disabled="scope.row.userName === 'admin'"
+							type="text"
+							@click="handleUpdate(scope.row)"
+							>修改</el-button
+						>
+						<el-button
+							v-permission="['system:user:remove']"
+							:disabled="scope.row.userName === 'admin'"
+							type="text"
+							@click="handleDelete(scope.row)"
+							>删除</el-button
+						>
 					</template>
 				</el-table-column>
 			</el-table>
@@ -108,11 +121,11 @@ export default {
 		/* 修改 */
 		handleUpdate(row) {
 			let userdialog = this.$refs.userdialog;
-			getUser(row.userId).then( res => {
+			getUser(row.userId).then((res) => {
 				userdialog.title = "修改用户";
 				userdialog.open = true;
 				userdialog.form = res.data;
-			})
+			});
 		},
 		/* 删除 */
 		handleDelete(row) {

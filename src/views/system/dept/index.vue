@@ -7,8 +7,8 @@
 					v-model="val"
 					placeholder="请输入部门名称"
 				></el-input>
-				<el-button type="primary" icon="el-icon-search">查询</el-button>
-				<el-button type="success" icon="el-icon-folder-add" @click="handelAdd">新增部门</el-button>
+				<el-button v-permission="['system:dept:query']" type="primary" icon="el-icon-search">查询</el-button>
+				<el-button v-permission="['system:dept:add']" type="success" icon="el-icon-folder-add" @click="handelAdd">新增部门</el-button>
 			</div>
 
 			<el-table
@@ -32,8 +32,8 @@
 				<el-table-column prop="remark" label="部门描述" align="center" show-overflow-tooltip />
 				<el-table-column label="操作" align="center" width="130">
 					<template slot-scope="scope">
-						<el-button type="text" @click="handleUpdate(scope.row)">修改</el-button>
-						<el-button type="text" @click="handleDelete(scope.row)">删除</el-button>
+						<el-button v-permission="['system:dept:edit']" type="text" @click="handleUpdate(scope.row)">修改</el-button>
+						<el-button v-permission="['system:dept:remove']" type="text" @click="handleDelete(scope.row)">删除</el-button>
 					</template>
 				</el-table-column>
 			</el-table>

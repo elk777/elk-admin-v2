@@ -18,6 +18,7 @@ const users = {
 		avatar: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
 		introduction: "I am a super tester",
 		name: "Super Test",
+		permissions: [],
 		roles: ["test"],
 	},
 };
@@ -33,7 +34,8 @@ module.exports = [
 			if (!token) {
 				return {
 					code: 60204,
-					message: "账号或者密码不正确",
+					msg: "账号或者密码不正确",
+					data:null
 				};
 			}
 

@@ -1,14 +1,20 @@
 <template>
 	<div class="menu-container layout-container">
-		<el-card shadow="hover" style="overflow-y: auto; min-height: 100%;">
+		<el-card shadow="hover" style="overflow-y: auto; min-height: 100%">
 			<div class="title-search mb15">
 				<el-input
 					style="max-width: 180px; margin-right: 10px"
 					v-model="val"
 					placeholder="请输入菜单名称"
 				></el-input>
-				<el-button type="primary" icon="el-icon-search">查询</el-button>
-				<el-button type="success" icon="el-icon-folder-add" @click="handleAdd">新增菜单</el-button>
+				<el-button v-permission="['system:menu:query']" type="primary" icon="el-icon-search">查询</el-button>
+				<el-button
+					v-permission="['system:menu:add']"
+					type="success"
+					icon="el-icon-folder-add"
+					@click="handleAdd"
+					>新增菜单</el-button
+				>
 			</div>
 
 			<el-table
@@ -30,8 +36,12 @@
 				<el-table-column prop="createTime" label="创建时间" align="center"></el-table-column>
 				<el-table-column label="操作" align="center" width="130">
 					<template slot-scope="scope">
-						<el-button type="text" @click="handleUpdate(scope.row)">修改</el-button>
-						<el-button type="text" @click="handleDelete(scope.row)">删除</el-button>
+						<el-button v-permission="['system:menu:edit']" type="text" @click="handleUpdate(scope.row)"
+							>修改</el-button
+						>
+						<el-button v-permission="['system:menu:remove']" type="text" @click="handleDelete(scope.row)"
+							>删除</el-button
+						>
 					</template>
 				</el-table-column>
 			</el-table>

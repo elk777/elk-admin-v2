@@ -1,8 +1,8 @@
 /*
  * @Author: elk 1185725133@qq.com
  * @Date: 2023-05-26 16:57:52
- * @LastEditors: elk 1185725133@qq.com
- * @LastEditTime: 2024-01-25 09:26:42
+ * @LastEditors: elk LYF_elk@163.com@qq.com
+ * @LastEditTime: 2024-01-31 09:20:15
  * @FilePath: /vue2_project/src/libs/utils/request.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -11,6 +11,7 @@
 import axios from "axios";
 import store from "@/store";
 import { MessageBox, Message } from "element-ui";
+import errorCode from "./errorCode";
 
 // 创建axios实例
 const service = axios.create({
@@ -49,11 +50,10 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
 	(response) => {
-		// console.log("请求拦截:", store);
 		// 不同的状态码，不同的处理
-		// 401 登录时间过期
 		const res = response.data,
-			code = res.code || 200;
+			code = res.code || 200,
+			msg = errorCode[code] || res.msg || errorCode['default'];
 		if (code === 401) {
 			MessageBox.confirm("登录状态已过期！请重新登陆哦", "系统提示", {
 				confirmButtonText: "重新登陆",
@@ -67,21 +67,28 @@ service.interceptors.response.use(
 			});
 			return Promise.reject("error");
 		}
-		if (code !== 200) {
+		if(code === 500) {
 			Message({
-				message: res.msg || "Error",
+				message: msg || "Error",
 				type: "error",
 				duration: 5 * 1000,
 			});
-			return Promise.reject(new Error(res.msg) || "Error");
+			return Promise.reject(new Error(msg));
+		}
+		if (code !== 200) {
+			Message({
+				message: msg || "Error",
+				type: "error",
+				duration: 5 * 1000,
+			});
+			return Promise.reject("Error");
 		}
 		// 成功响应数据处理
 		return res;
 	},
 	(error) => {
-		console.log("统一错误");
 		// 不同的msg响应 对应的处理
-		console.log("err" + error);
+		console.log("统一err" + error);
 		let { message } = error;
 		if (message == "Network Error") {
 			message = "后端接口连接异常";

@@ -1,8 +1,8 @@
 /*
  * @Author: elk 1185725133@qq.com
  * @Date: 2024-01-06 11:24:14
- * @LastEditors: elk 1185725133@qq.com
- * @LastEditTime: 2024-01-25 09:45:16
+ * @LastEditors: elk LYF_elk@163.com@qq.com
+ * @LastEditTime: 2024-02-02 11:04:34
  * @FilePath: /vue2_project/src/api/file.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -17,6 +17,7 @@ const apis = {
 	uploadBase64: "/upload/single_base64",
 	uploadChunk: "/upload/chunk",
 	uploadMerge: "/upload/merge",
+	uploadAlready: "/upload/already",
 };
 /* 文件流下载 */
 const downloadData = (data) => {
@@ -51,7 +52,7 @@ const downloadBase64 = (data) => {
 /* fromdata 单文件上传 */
 const uploadFormData = (data, { callback } = {}) => {
 	return request({
-		url: apis.uploadFormData,/*  */
+		url: apis.uploadFormData /*  */,
 		method: "post",
 		baseUrl: "file",
 		headers: {
@@ -77,16 +78,21 @@ const uploadBase64 = (data) => {
 	});
 };
 /* 大文件切片 自定义上传 */
-const uploadChunk = (data, { fileName }) => {
+const uploadChunk = (data, { callback } = {}) => {
 	return request({
 		url: apis.uploadChunk,
 		method: "post",
 		baseUrl: "file",
 		data,
 		headers: {
-			"Content-MD5": fileName,
 			"Content-fileType": "chunk",
 			"Content-Type": "multipart/form-data",
+		},
+		onUploadProgress: (progressEvent) => {
+			// 获取进度参数
+			if (callback) {
+				callback({ loaded: progressEvent.loaded, total: progressEvent.total });
+			}
 		},
 	});
 };
@@ -96,8 +102,26 @@ const uploadMerge = (data) => {
 		url: apis.uploadMerge,
 		method: "post",
 		baseUrl: "file",
-		data
+		data,
+	});
+};
+/* 大文件获取已经上传的切片 自定义上传 */
+const uploadAlready = (params) => {
+	return request({
+		url: apis.uploadAlready,
+		method: "get",
+		baseUrl: "file",
+		params,
 	});
 };
 
-export { downloadData, downloadURL, downloadBase64, uploadFormData, uploadBase64, uploadChunk, uploadMerge };
+export {
+	downloadData,
+	downloadURL,
+	downloadBase64,
+	uploadFormData,
+	uploadBase64,
+	uploadChunk,
+	uploadMerge,
+	uploadAlready,
+};

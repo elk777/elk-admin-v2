@@ -1,8 +1,8 @@
 /*
  * @Author: elk 1185725133@qq.com
  * @Date: 2024-01-19 16:15:39
- * @LastEditors: elk 1185725133@qq.com
- * @LastEditTime: 2024-01-25 11:27:13
+ * @LastEditors: elk LYF_elk@163.com@qq.com
+ * @LastEditTime: 2024-02-04 16:01:56
  * @FilePath: /vue2_project/src/views/fun/uploading/index.js
  * @Description: 文件上传组件「uploading」 私有方法
  */
@@ -17,7 +17,34 @@ const getSuffix = (name) => {
 };
 
 /**
- * @description:
+ * @description: 计算进度条的进度值
+ * @param {*} chunks 切片集合
+ * @param {*} type 计算取值类型
+ * @return {*}
+ */
+const calPercentage = (chunks, type) => {
+	let loaded = chunks
+		.map((item) => {
+			return type ? item.loaded : item.file.size;
+		})
+		.reduce((pre = 0, cur) => {
+			return pre + cur;
+		});
+	return loaded;
+};
+
+/**
+ * @description: 过滤已经上传的切片
+ * @param {*} alreadys: 已经上传的切片集合
+ * @param {*} chunks: 切片的集合
+ * @return {*}
+ */
+const filterChunks = (alreadys, chunks, type) => {
+	return chunks.filter((item) => (type ? !alreadys.includes(item.fileName) : alreadys.includes(item.fileName)));
+};
+
+/**
+ * @description: 生成切片列表
  * 	大文件切片「根据文件实际大小而定」
     固定大小: 2MB  1024 * 1024 * 2
     最大数量: 100
@@ -51,4 +78,4 @@ const fileSection = (file, hash) => {
 	}
 	return chunks;
 };
-export { getSuffix, fileSection };
+export { getSuffix, fileSection, filterChunks, calPercentage };

@@ -7,8 +7,10 @@
 					v-model="val"
 					placeholder="请输入字典名称"
 				></el-input>
-				<el-button type="primary" icon="el-icon-search">查询</el-button>
-				<el-button type="success" icon="el-icon-folder-add" @click="handelAdd">新增字典</el-button>
+				<el-button v-permission="['system:dic:query']" type="primary" icon="el-icon-search">查询</el-button>
+				<el-button v-permission="['system:dic:add']" type="success" icon="el-icon-folder-add" @click="handelAdd"
+					>新增字典</el-button
+				>
 			</div>
 
 			<el-table v-loading="loading" :data="dicList">
@@ -24,8 +26,12 @@
 				<el-table-column prop="remark" label="用户描述" align="center" show-overflow-tooltip />
 				<el-table-column label="操作" align="center" width="130">
 					<template slot-scope="scope">
-						<el-button type="text" @click="handleUpdate(scope.row)">修改</el-button>
-						<el-button type="text" @click="handleDelete(scope.row)">删除</el-button>
+						<el-button v-permission="['system:dic:edit']" type="text" @click="handleUpdate(scope.row)"
+							>修改</el-button
+						>
+						<el-button v-permission="['system:dic:remove']" type="text" @click="handleDelete(scope.row)"
+							>删除</el-button
+						>
 					</template>
 				</el-table-column>
 			</el-table>
