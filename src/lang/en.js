@@ -18,8 +18,7 @@ export default {
         Qrcode: "qrcode",
         Uploading: "uploading",
         Download: "download",
-        monitor: 'monitor',
-        Online: 'monitorOnline'
+        UserProfile: 'UserProfile'
     },
     /* 顶部工具栏 */
     toolsMenus: {

@@ -15,21 +15,6 @@ const menus = [
 		isCache: "0",
 	},
 	{
-		menuId: 2,
-		parentId: 0,
-		menuType: "M",
-		menuName: "系统监控",
-		icon: "monitor",
-		orderNum: 2,
-		isFrame: "1",
-		path: "monitor",
-		component: null,
-		perms: null,
-		visible: "0",
-		status: "0",
-		isCache: "0",
-	},
-	{
 		menuId: 3,
 		parentId: 1,
 		menuType: "C",
@@ -523,22 +508,7 @@ const menus = [
 		visible: "0",
 		status: "0",
 		isCache: "0",
-	},
-	{
-		menuId: 16,
-		parentId: 2,
-		menuType: "C",
-		menuName: "在线用户",
-		icon: "online",
-		orderNum: 0,
-		isFrame: "1",
-		path: "online",
-		component: "/system/online",
-		perms: "system:online:list",
-		visible: "0",
-		status: "0",
-		isCache: "0",
-	},
+	}
 ];
 
 module.exports = [

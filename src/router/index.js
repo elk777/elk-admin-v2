@@ -51,7 +51,22 @@ export const constantRoutes = [
     path: '/404',
     component: () => import('@/views/404.vue'),
     hidden: true
-  }
+  },
+  {
+    path: '/user/profile',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/user/profile',
+        name: 'UserProfile',
+        component: () => import('@/views/user/index.vue'),
+        meta: {
+          title: '个人中心', icon: 'user', noCache: true, affix: false
+        }
+      }
+    ]
+  },
 ]
 
 const router = new VueRouter({

@@ -128,26 +128,7 @@ const routers = [
 				affix: false,
 			},
 		],
-	},
-	{
-		id: Mock.Random.increment(),
-		title: "系统监控",
-		name: "monitor",
-		path: "/monitor",
-		icon: "monitor",
-		redirect: "noRedirect",
-		children: [
-			{
-				id: Mock.Random.increment(),
-				title: "在线用户",
-				name: "Online",
-				path: "online",
-				icon: "online",
-				link: "/monitor/online",
-				affix: false,
-			},
-		],
-	},
+	}
 ];
 
 module.exports = [

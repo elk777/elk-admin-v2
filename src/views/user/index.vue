@@ -1,13 +1,12 @@
 <template>
     <div>
-        在线用户
+        个人中心界面
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Online',
-
+    name: 'UserProfile',
     data() {
         return {
             
@@ -24,6 +23,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
 
 </style>

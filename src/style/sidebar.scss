@@ -12,6 +12,16 @@
         box-shadow: 2px 0px 6px rgba(0, 21, 41, .35);
         .el-menu {
             border: none;
+            .el-menu-item {
+                .svg-icon {
+                    margin-right: 14px;
+                }
+            }
+            .el-submenu__title {
+                .svg-icon {
+                    margin-right: 14px;
+                }
+            }
         }
         /* element滚动条组件 隐藏水平滚动条 */
         .scrollbar-wrapper {
@@ -44,20 +54,34 @@
         .el-submenu__title span {
             display: none;
         }
-
         .el-submenu__icon-arrow {
             display: none;
+        }
+        .el-menu-item{
+            padding: 0px !important;
+        }
+        .el-menu-item>.el-tooltip{
+            padding: 0px !important;
+            .svg-icon {
+                margin-left: 20px;
+            }
+        }
+        .el-submenu>.el-submenu__title {
+            padding: 0px !important;
+            .svg-icon {
+                margin-left: 20px;
+            }
         }
     }
 
     /* 侧边折叠后 宽度 */
     .sidebar-collapse {
-        width: 65px !important;
+        width: 56px !important;
     }
 
     /* 侧边折叠后 nav和appmain 左侧边距 */
     .main-collapse {
-        margin-left: 65px;
+        margin-left: 56px;
     }
 
 }

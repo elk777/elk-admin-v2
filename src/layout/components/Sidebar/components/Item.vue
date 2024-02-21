@@ -19,7 +19,7 @@ export default {
             vnodes.push(<svg-icon icon-class={icon} />)
         }
         if (title) {
-            vnodes.push(<span style="margin-left:5px" slot="title">{title}</span>)
+            vnodes.push(<span slot="title">{title}</span>)
         }
         return vnodes
     }

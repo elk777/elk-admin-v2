@@ -2,7 +2,7 @@
  * @Author: elk 1185725133@qq.com
  * @Date: 2023-05-26 16:57:52
  * @LastEditors: elk LYF_elk@163.com@qq.com
- * @LastEditTime: 2024-01-31 09:20:15
+ * @LastEditTime: 2024-02-20 14:10:30
  * @FilePath: /vue2_project/src/libs/utils/request.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -23,7 +23,6 @@ const service = axios.create({
 service.interceptors.request.use(
 	(config) => {
 		let baseUrl = config.baseUrl;
-        // console.log("config", config);
         /* 根据接口传递baseUrl参数去配置对应的后端接口域名 */
 		switch (baseUrl) {
 			case "file":

@@ -170,11 +170,13 @@
 </template>
 
 <script>
-import { uploadFormData, uploadBase64, uploadChunk, uploadMerge, uploadAlready } from "@/api/file";
-import { getBase64, getFileMD5 } from "@/libs/utils/tools";
-import { getSuffix, fileSection, filterChunks, calPercentage } from "./private";
+import { uploadFormData, uploadBase64 } from "@/api/file";
+import { getBase64 } from "@/libs/utils/tools";
+import { getSuffix } from "./private";
+import { Mixins } from "./largeFileMixin";
 export default {
 	name: "Uploading",
+	mixins: [Mixins],
 	data() {
 		return {
 			/* 按钮状态集合 */
@@ -182,11 +184,8 @@ export default {
 			loadingBase64: false,
 			loadingPicture: false,
 			loadingSchedule: false,
-			loadingChunk: false,
 			loadingMulti: false,
 			percentage: 0, // 单文件上传进度值
-			percentageChunks: [], // 大文件切片上传进度列表
-			alreadyChunks: [],    // 大文件已经上传切片列表
 			showProgress: false, // 多文件是否开启进度展示
 			uploadFormData: {
 				/* 上传地址 */
@@ -213,19 +212,6 @@ export default {
 	computed: {
 		token() {
 			return this.$store.getters.token;
-		},
-		/* 大文件切片上传进度值 */
-		percentageChunk: function () {
-			const { size } = this.file;
-			let percentage = 0;
-			let alreadyChunks = this.alreadyChunks;
-			if (this.percentageChunks.length > 0) {
-				alreadyChunks.length > 0 && (percentage += calPercentage(alreadyChunks, false));
-				percentage += calPercentage(this.percentageChunks, true);
-
-				return Math.floor((percentage / size) * 100);
-			}
-			return percentage;
 		},
 	},
 	methods: {
@@ -387,67 +373,6 @@ export default {
 					this.multiFileList = [];
 					this.$refs.uploadmulti.clearFiles();
 				});
-		},
-		/* 切片上传成功 */
-		complete(index, count, hash) {
-			// 当所有切片上传成功，通知服务器合并切片
-			if (index === count) {
-				uploadMerge({ hash, count })
-					.then((res) => {
-						if (res.code === 200) {
-							this.$message.success(res.msg);
-							this.percentageChunks = [];
-						}
-						this.onLoading("Chunk", false);
-					})
-					.catch((err) => {
-						console.log("合并错误", err);
-						this.onLoading("Chunk", false);
-					});
-			}
-		},
-		/* 大文件切片上传 自定义 */
-		async onUploadChunk() {
-			const file = this.file;
-			let index = 0;
-			try {
-				let HASH = await getFileMD5(file),
-					alreadyData = await uploadAlready({ hash: HASH }),
-					alreadys = alreadyData.data.chunkList,
-					chunks = fileSection(file, HASH),
-					filterChunk = filterChunks(alreadys, chunks, true);
-				this.alreadyChunks = filterChunks(alreadys, chunks, false);
-				const chunkAll = filterChunk
-					.map((item, idx) => {
-						let formdata = new FormData();
-						formdata.append("file", item.file);
-						formdata.append("fileName", item.fileName);
-						formdata.append("count", item.count);
-						formdata.append("hash", HASH);
-						return { formdata, idx };
-					})
-					.map(({ formdata, idx }) => {
-						uploadChunk(formdata, {
-							callback: ({ loaded, total }) => {
-								this.$nextTick(() => {
-									this.$set(this.percentageChunks, idx, {
-										loaded: loaded,
-										size: total,
-									});
-								});
-							},
-						}).then((res) => {
-							if (res.code === 200) {
-								index++;
-								this.complete(index, filterChunk.length, HASH);
-								return;
-							}
-						});
-					});
-				await Promise.all(chunkAll);
-			} catch (error) {
-				this.onLoading("Chunk", false);
-			}
 		},
 		/* loading状态切换 */
 		onLoading(type, status) {

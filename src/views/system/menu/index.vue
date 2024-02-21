@@ -32,7 +32,11 @@
 				<el-table-column prop="orderNum" label="排序" align="center"></el-table-column>
 				<el-table-column prop="perms" label="权限标识" align="center"></el-table-column>
 				<el-table-column prop="component" label="组件路径" align="center"></el-table-column>
-				<el-table-column prop="status" label="状态" align="center"></el-table-column>
+				<el-table-column prop="status" label="状态" align="center">
+					<template slot-scope="scope">
+						<el-tag>{{ formatterStatus(scope.row.status) }}</el-tag>
+					</template>
+				</el-table-column>
 				<el-table-column prop="createTime" label="创建时间" align="center"></el-table-column>
 				<el-table-column label="操作" align="center" width="130">
 					<template slot-scope="scope">
@@ -61,6 +65,7 @@
 
 <script>
 import { listMenu, getMenu, delMenu } from "@/api/system/menu";
+import { listDic } from "@/api/system/dic";
 import MenuDialog from "./dialog";
 export default {
 	name: "Menu",
@@ -70,6 +75,7 @@ export default {
 	data() {
 		return {
 			menuList: [],
+			dicData: [],
 			val: "",
 			loading: false,
 			queryParams: {
@@ -81,10 +87,34 @@ export default {
 	},
 
 	mounted() {
+		this.getDicList();
 		this.getList();
 	},
 
+	computed: {
+		/* 格式化状态新增展示 */
+		formatterStatus(status) {
+			return (status) => {
+				let dicData = this.dicData;
+				if (dicData.length > 0) {
+					const val = dicData.filter((item) => {
+						return item.value == status;
+					})[0].label;
+					return val;
+				}
+			};
+		},
+	},
+
 	methods: {
+		/* 获取菜单状态字典 */
+		getDicList() {
+			listDic({ dicType: "sys_show_hide" }).then((res) => {
+				if (res.code === 200 && res.data.length > 0) {
+					this.dicData = res.data[0].dicData;
+				}
+			});
+		},
 		/* 获取menu列表 */
 		getList() {
 			this.loading = true;

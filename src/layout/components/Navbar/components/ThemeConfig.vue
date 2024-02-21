@@ -138,6 +138,9 @@ export default {
         .theme-svg {
             margin-top: 15px;
             position: relative;
+            .svg-icon {
+                padding: 0 10px;
+            }
             * {
                 cursor: pointer;
             }

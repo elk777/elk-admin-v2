@@ -29,6 +29,13 @@ module.exports = [
 		url: "vue-elk-admin/system/dic/list",
 		type: "get",
 		response: (config) => {
+			const dicType = config.url.match(/dicType=([^&#]+)/)[1];
+			if(dicType) {
+				return {
+					code: 200,
+					data: dics.filter((item) => item.dicType == dicType),
+				};
+			}
 			return {
 				code: 200,
 				data: dics,
@@ -40,7 +47,6 @@ module.exports = [
 		url: "vue-elk-admin/system/dic.*",
 		type: "get",
 		response: (config) => {
-			// console.log("config", config);
 			const id = config.url.match(/dic\/([^&#]+)/)[1];
 			const data = dics.find((item) => item.dicId == id || item.dicType == id);
 			return {

@@ -84,7 +84,6 @@ export default {
 				const tree = this.$handleTree(res.data, "deptId");
 				this.deptList = tree;
 				this.$refs.deptdialog.MenuOptions = tree;
-				console.log("部门树形结构", tree);
 				this.total = res.data.length;
 			});
 		},

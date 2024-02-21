@@ -2,7 +2,7 @@
     <div class="tools-menu-container">
         <!-- 组件大小切换 -->
         <el-dropdown @command="touchCommand($event, 'componentSize')" trigger="click" class="menu-height hover-effect">
-            <div>
+            <div class="menu-icon">
                 <svg-icon icon-class="size" />
             </div>
             <el-dropdown-menu>
@@ -13,12 +13,12 @@
             </el-dropdown-menu>
         </el-dropdown>
         <!-- 搜索功能 -->
-        <div @click="touchCommand(null,'isSearch')" class="menu-height hover-effect">
+        <div @click="touchCommand(null,'isSearch')" class="menu-height hover-effect menu-icon">
             <svg-icon icon-class="search" />
         </div>
         <!-- 中英文切换 -->
         <el-dropdown @command="touchCommand($event, 'languageType')" trigger="click" class="menu-height hover-effect">
-            <div>
+            <div class="menu-icon">
                 <svg-icon :icon-class="languageType" />
             </div>
             <el-dropdown-menu>
@@ -27,11 +27,11 @@
             </el-dropdown-menu>
         </el-dropdown>
         <!-- 换肤 -->
-        <div @click="touchCommand(null, 'isThemeConfig')" class="menu-height hover-effect">
+        <div @click="touchCommand(null, 'isThemeConfig')" class="menu-height hover-effect menu-icon">
             <svg-icon icon-class="clot" />
         </div>
         <!-- 全屏按钮 -->
-        <ScreenFull class="menu-height hover-effect"/>
+        <ScreenFull class="menu-height hover-effect menu-icon"/>
     </div>
 </template>
 
@@ -75,6 +75,9 @@ export default {
 
     .menu-height {
         line-height: 50px;
+    }
+    .menu-icon {
+        padding: 0 10px;
     }
 
     .hover-effect {

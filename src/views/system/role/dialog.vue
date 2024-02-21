@@ -97,7 +97,6 @@ export default {
 				const { data } = res;
 				const tree = this.$handleTree(data);
 				this.menuData = tree;
-				console.log("当前menuData", this.menuData);
 			});
 		},
 		/* 获取menu-tree选择节点 */

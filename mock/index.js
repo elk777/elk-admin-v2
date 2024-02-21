@@ -2,7 +2,6 @@ const Mock = require("mockjs");
 
 const login = require("./login");
 const routers = require("./routers");
-// const file = require("./file");
 const styMenu = require("./system/menu");
 const styUser = require("./system/user");
 const styRole = require("./system/role");
@@ -16,7 +15,6 @@ Mock.setup({
 const mocks = [
     ...login,
     ...routers,
-    // ...file,
     ...styMenu,
     ...styUser,
     ...styRole,

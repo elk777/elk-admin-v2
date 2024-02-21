@@ -18,8 +18,7 @@ export default {
         Qrcode: "二维码生成",
         Uploading: "文件上传",
         Download: "文件下载",
-		monitor: "系统监控",
-		Online: "在线用户",
+		UserProfile: '个人中心'
 	},
 	/* 顶部工具栏 */
 	toolsMenus: {
