@@ -18,7 +18,11 @@ export default {
         Qrcode: "qrcode",
         Uploading: "uploading",
         Download: "download",
-        UserProfile: 'UserProfile'
+        UserProfile: 'UserProfile',
+        Demo: 'demo',
+        Echarts: 'echarts',
+        CustomLayout: 'CustomLayout',
+        DesignClarification: 'DesignClarification'
     },
     /* 顶部工具栏 */
     toolsMenus: {

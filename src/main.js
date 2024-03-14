@@ -17,6 +17,9 @@ import i18n from "./lang";
 import ElementUI from "element-ui";
 import "@/style/element-variables.scss";
 // import 'element-ui/lib/theme-chalk/index.css';
+import antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css'; // or 'ant-design-vue/dist/antd.less'
+Vue.use(antd);
 
 // 全局注册自定义指令
 import directive from "./directive";

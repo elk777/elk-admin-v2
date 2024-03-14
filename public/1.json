@@ -1,0 +1,55 @@
+{
+    "code": 200,
+    "data": [
+        {
+            "id": 1,
+            "leaderName": "张领导",
+            "area": "A区域",
+            "beginDate": "2023-03-02",
+            "note": "通过"
+        },
+        {
+            "id": 2,
+            "leaderName": "黄领导",
+            "area": "B区域",
+            "beginDate": "2023-03-05",
+            "note": "通过"
+        },
+        {
+            "id": 3,
+            "leaderName": "王领导",
+            "area": "C区域",
+            "beginDate": "2023-03-05",
+            "note": "通过"
+        },
+        {
+            "id": 4,
+            "leaderName": "王领导",
+            "area": "D区域",
+            "beginDate": "2023-03-05",
+            "note": "通过"
+        },
+        {
+            "id": 5,
+            "leaderName": "蔡领导",
+            "area": "E区域",
+            "beginDate": "2023-03-05",
+            "note": "通过"
+        },
+        {
+            "id": 6,
+            "leaderName": "谭领导",
+            "area": "F区域",
+            "beginDate": "2023-03-05",
+            "note": "通过"
+        },
+        {
+            "id": 7,
+            "leaderName": "许领导",
+            "area": "G区域",
+            "beginDate": "2023-03-05",
+            "note": "通过"
+        }
+    ],
+    "msg": "领导巡查情况获取成功"
+}

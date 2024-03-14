@@ -9,7 +9,7 @@
 				:unique-opened="false"
 				:collapse-transition="false"
 				:text-color="formatClass('text')"
-				:background-color="formatClass('bg')"
+				:background-color="formatClass('bg')" 
 			>
 				<template v-for="item in sidebarRouters">
 					<el-submenu

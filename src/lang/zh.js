@@ -18,7 +18,11 @@ export default {
         Qrcode: "二维码生成",
         Uploading: "文件上传",
         Download: "文件下载",
-		UserProfile: '个人中心'
+		UserProfile: '个人中心',
+		Demo: 'demo',
+		Echarts: 'echarts',
+		CustomLayout: '自定义展示',
+		DesignClarification: "周报、月报"
 	},
 	/* 顶部工具栏 */
 	toolsMenus: {

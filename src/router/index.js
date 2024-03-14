@@ -67,6 +67,11 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '*',
+    redirect: '/404',
+    hidden: true
+  }
 ]
 
 const router = new VueRouter({

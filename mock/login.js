@@ -1,3 +1,11 @@
+/*
+ * @Author: elk LYF_elk@163.com@qq.com
+ * @Date: 2023-12-18 09:30:01
+ * @LastEditors: elk LYF_elk@163.com@qq.com
+ * @LastEditTime: 2024-03-11 22:00:41
+ * @FilePath: /vue2_project/mock/login.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 const tokens = {
 	admin: {
 		token: "admin-token",

@@ -2,7 +2,7 @@
  * @Author: elk 1185725133@qq.com
  * @Date: 2023-05-26 16:57:52
  * @LastEditors: elk LYF_elk@163.com@qq.com
- * @LastEditTime: 2024-02-20 14:10:30
+ * @LastEditTime: 2024-03-06 15:26:53
  * @FilePath: /vue2_project/src/libs/utils/request.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -23,15 +23,21 @@ const service = axios.create({
 service.interceptors.request.use(
 	(config) => {
 		let baseUrl = config.baseUrl;
+		console.log("baseURL", baseUrl);
         /* 根据接口传递baseUrl参数去配置对应的后端接口域名 */
 		switch (baseUrl) {
 			case "file":
 				config.baseURL = process.env.VUE_APP_BASE_FILE_URL + process.env.VUE_APP_BASE_API ;
 				break;
+			case "mock":
+			    config.baseURL = process.env.VUE_APP_BASE_MOCK_URL;
+				break;
+			    // config.baseURL = 'http://127.0.0.1:4523/m1/3811307-0-default';
 			default:
                 config.baseURL = process.env.VUE_APP_BASE_API ;
 				break;
 		}
+		console.log("config", config);
 		// 判断是否携带token验证
 		const isToken = (config.headers || {}).isToken === false;
 		// vuex中的token 借用vuex-persistedstate 已经持久存储
