@@ -17,6 +17,7 @@ const routers = [
 				icon: "menu",
 				link: "/system/menu",
 				affix: false,
+				noCache:false
 			},
 			{
 				id: Mock.Random.increment(),
@@ -26,6 +27,7 @@ const routers = [
 				icon: "user",
 				link: "/system/user",
 				affix: false,
+				noCache:true
 			},
 			{
 				id: Mock.Random.increment(),
@@ -35,6 +37,7 @@ const routers = [
 				icon: "role",
 				link: "/system/role",
 				affix: false,
+				noCache:true
 			},
 			{
 				id: Mock.Random.increment(),
@@ -44,6 +47,7 @@ const routers = [
 				icon: "dept",
 				link: "/system/dept",
 				affix: false,
+				noCache:true
 			},
 			{
 				id: Mock.Random.increment(),
@@ -53,6 +57,7 @@ const routers = [
 				icon: "dic",
 				link: "/system/dic",
 				affix: false,
+				noCache:true
 			},
 		],
 	},
@@ -72,6 +77,7 @@ const routers = [
 				icon: "menu",
 				link: "/fun/report",
 				affix: false,
+				noCache:false
 			},
 			{
 				id: Mock.Random.increment(),
@@ -81,6 +87,7 @@ const routers = [
 				icon: "menu",
 				link: "/fun/custom",
 				affix: false,
+				noCache:false
 			},
 			{
 				id: Mock.Random.increment(),
@@ -90,6 +97,7 @@ const routers = [
 				icon: "menu",
 				link: "/fun/echarts",
 				affix: false,
+				noCache:false
 			},
 			{
 				id: Mock.Random.increment(),
@@ -99,6 +107,7 @@ const routers = [
 				icon: "menu",
 				link: "/fun/demo",
 				affix: false,
+				noCache:false
 			},
 			{
 				id: Mock.Random.increment(),
@@ -108,6 +117,7 @@ const routers = [
 				icon: "editor",
 				link: "/fun/editor",
 				affix: false,
+				noCache:false
 			},
 			{
 				id: Mock.Random.increment(),
@@ -117,6 +127,7 @@ const routers = [
 				icon: "print",
 				link: "/fun/print",
 				affix: false,
+				noCache:false
 			},
 			{
 				id: Mock.Random.increment(),
@@ -126,6 +137,7 @@ const routers = [
 				icon: "cropper",
 				link: "/fun/cropper",
 				affix: false,
+				noCache:false
 			},
 			{
 				id: Mock.Random.increment(),
@@ -135,6 +147,7 @@ const routers = [
 				icon: "preview",
 				link: "/fun/preview",
 				affix: false,
+				noCache:false
 			},
 			{
 				id: Mock.Random.increment(),
@@ -144,6 +157,7 @@ const routers = [
 				icon: "qrcode",
 				link: "/fun/qrcode",
 				affix: false,
+				noCache:false
 			},
 			{
 				id: Mock.Random.increment(),
@@ -153,6 +167,7 @@ const routers = [
 				icon: "uploading",
 				link: "/fun/uploading",
 				affix: false,
+				noCache:false
 			},
 			{
 				id: Mock.Random.increment(),
@@ -162,6 +177,7 @@ const routers = [
 				icon: "download",
 				link: "/fun/download",
 				affix: false,
+				noCache:false
 			},
 		],
 	}

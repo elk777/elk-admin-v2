@@ -35,7 +35,7 @@ import { mapGetters } from 'vuex';
 export default {
     name: 'TagsView',
     computed: {
-        ...mapGetters(['visitedViews', 'routers']),
+        ...mapGetters(['visitedViews', 'routers','cacheViews']),
         formatI18n() {
             return (type,key) => {
                 return this.$formatI18n(this, type, key)
@@ -54,6 +54,8 @@ export default {
     watch: {
         /* 监听route：tabs标签选中值切换、改变标签栏列表数据 */
         $route(route) {
+            console.log("route",route);
+            console.log("cacheViews",this.cacheViews);
             const { path } = route
             this.tabsValue = path;
             this.addTags();

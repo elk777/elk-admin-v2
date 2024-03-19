@@ -2,7 +2,7 @@
  * @Author: elk 1185725133@qq.com
  * @Date: 2023-05-26 16:57:52
  * @LastEditors: elk LYF_elk@163.com@qq.com
- * @LastEditTime: 2024-03-06 15:26:53
+ * @LastEditTime: 2024-03-19 22:45:35
  * @FilePath: /vue2_project/src/libs/utils/request.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -77,7 +77,7 @@ service.interceptors.response.use(
 				message: msg || "Error",
 				type: "error",
 				duration: 5 * 1000,
-			});
+			});``
 			return Promise.reject(new Error(msg));
 		}
 		if (code !== 200) {

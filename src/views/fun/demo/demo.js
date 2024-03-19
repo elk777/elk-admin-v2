@@ -3,16 +3,6 @@ export const Mixins = {
 		arr: ["1", 1, "1", "2", "we", "we", "12", "hello", "word"];
 	},
 	methodes: {
-        /* 
-            手写call 
-                改变this指向
-                动态传递参数
-                兼容new关键字
-        */
-        myCall(){
-            
-        },
-
 		// 数组去重的方法
 		/* 1. Set */
 		setFun() {
