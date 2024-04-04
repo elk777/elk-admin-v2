@@ -27,9 +27,8 @@ module.exports = {
 	assetsDir: "static",
 	// 开发环境下开启eslint代码检测
 	lintOnSave: process.env.NODE_ENV === "development",
-
 	devServer: {
-		// host: "0.0.0.0",
+		host: "0.0.0.0",
 		port: port,
 		open: true,
 		// webSocketServer: true,

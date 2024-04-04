@@ -6,6 +6,7 @@ const routers = [
 		title: "系统管理",
 		name: "system",
 		path: "/system",
+		link: null,
 		icon: "system",
 		redirect: "noRedirect",
 		children: [
@@ -67,6 +68,7 @@ const routers = [
 		name: "fun",
 		path: "/fun",
 		icon: "fun",
+		link: null,
 		redirect: "noRedirect",
 		children: [
 			{
@@ -180,7 +182,48 @@ const routers = [
 				noCache:false
 			},
 		],
-	}
+	},
+	{
+		id: Mock.Random.increment(),
+		title: "外链",
+		name: "link",
+		path: "/link",
+		icon: "link",
+		link: null,
+		redirect: "noRedirect",
+		children: [
+			{
+				id: Mock.Random.increment(),
+				title: "vue2官网「内嵌」",
+				name: "Vue",
+				path: "vue",
+				icon: "vue",
+				isLink: "https://v2.cn.vuejs.org/",
+				affix: false,
+				noCache:true
+			},
+			{
+				id: Mock.Random.increment(),
+				title: "GitHub 仓库",
+				name: "GitHub",
+				path: "git",
+				icon: "git",
+				isLink: "https://github.com/elk777/elk-admin-v2",
+				affix: false,
+				noCache:true
+			},
+			{
+				id: Mock.Random.increment(),
+				title: "稀土-掘金",
+				name: "JueJin",
+				path: "juejin",
+				icon: "juejin",
+				isLink: "https://juejin.cn/user/3940246036416872",
+				affix: false,
+				noCache:true
+			},
+		],
+	},
 ];
 
 module.exports = [

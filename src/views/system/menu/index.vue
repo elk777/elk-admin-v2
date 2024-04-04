@@ -93,7 +93,7 @@ export default {
 
 	computed: {
 		/* 格式化状态新增展示 */
-		formatterStatus(status) {
+		formatterStatus() {
 			return (status) => {
 				let dicData = this.dicData;
 				if (dicData.length > 0) {

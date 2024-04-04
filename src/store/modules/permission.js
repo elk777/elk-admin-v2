@@ -60,6 +60,7 @@ const actions = {
     }
 */
 const formatRouters = function (routers) {
+    // console.log("过滤前的路由",routers);
     let routerObj = {
         path: '',
         component: '',
@@ -73,6 +74,7 @@ const formatRouters = function (routers) {
             name: router.name,
             meta: {
                 title: router.title,
+                isLink: router.isLink || null,
                 icon: router.icon || '',
                 noCache: router.noCache || false,
                 affix: router.affix || false,

@@ -8,7 +8,7 @@
                 <div @click="handelSvg($event, 'themeStyle')" class="theme-svg">
                     <svg-icon icon-class="theme-light"></svg-icon>
                     <svg-icon icon-class="theme-dead"></svg-icon>
-                    <svg-icon icon-class="theme-dark"></svg-icon>
+                    <!-- <svg-icon icon-class="theme-dark"></svg-icon> -->
                     <span :style="formatStyle('style')" class="svg-active">✔️</span>
                 </div>
             </div>
@@ -64,10 +64,10 @@ export default {
                         case 'theme-light':
                             return 'left: 30px';
                         case 'theme-dead':
-                            return 'left: 90px';
+                            return 'left: 85px';
                         case 'theme-dark':
                             this.changeDark(themeStyle, 'themeStyle');
-                            return 'left: 150px';
+                            return 'left: 140px';
                         default:
                             return 'left: 30px';
                     }
@@ -76,7 +76,7 @@ export default {
                         case 'vertical':
                             return 'left: 30px';
                         case 'horizontal':
-                            return 'left: 90px';
+                            return 'left: 80px';
                         default:
                             return 'left: 30px';
                     }
@@ -171,7 +171,7 @@ export default {
     }
 
     .svg-icon {
-        width: 2.5rem !important;
+        width: 3.5rem !important;
         height: 2.5rem !important;
     }
 }

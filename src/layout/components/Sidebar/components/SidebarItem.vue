@@ -1,3 +1,4 @@
+
 <template>
         <!--
              1.没有children: 直接就是一个跳转链接
@@ -16,7 +17,15 @@
             </sidebar-item>
         </el-submenu>
         <el-menu-item v-else :index="formatPath(item)">
-            <Item :icon="formatItem('icon', item)" :title="formatItem('title', item)" />
+            <Item  :icon="formatItem('icon', item)" :title="formatItem('title', item)" />
+            <!-- <template v-if="!item.meta.isLink" >
+                <router-link :to="{path: 'home'}">
+                    <Item  :icon="formatItem('icon', item)" :title="formatItem('title', item)" />
+                </router-link>
+            </template>
+            <a v-else :href="item.meta.isLink" target="_blank">
+                <Item :icon="formatItem('icon', item)" :title="formatItem('title', item)" />
+            </a> -->
         </el-menu-item>
 </template>
 
@@ -34,6 +43,7 @@ export default {
     methods: {
         /* 格式化item */
         formatItem(type, item) {
+            // console.log("item",item);
             if (type === 'multi') {
                 return this.$formatI18n(this,'menus',item);
             }

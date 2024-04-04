@@ -1,6 +1,6 @@
 <template>
 	<div class="app-wapper">
-    <!-- 侧边导航栏 -->
+    	<!-- 侧边导航栏 -->
 		<SideBar v-if="themeConfig.layoutStyle === 'vertical'" :style="{ backgroundColor: formatStyle }" />
 		<div
 			:style="themeConfig.layoutStyle === 'horizontal' && 'margin-left: 0px'"

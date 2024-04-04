@@ -2,7 +2,7 @@
  * @Author: elk LYF_elk@163.com@qq.com
  * @Date: 2023-10-26 14:17:26
  * @LastEditors: elk LYF_elk@163.com@qq.com
- * @LastEditTime: 2024-03-11 22:05:26
+ * @LastEditTime: 2024-04-04 19:23:47
  * @FilePath: /vue2_project/src/libs/permission/permissionRouter.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%
  */
@@ -46,6 +46,7 @@ router.beforeEach((to, from, next) => {
                 store.dispatch("GetInfo").then(() => {
                     store.dispatch("GenerateRouter").then(res => {
                         // 添加routers
+                        // console.log("router-res", res);
                         router.addRoutes(res); 
                         next({ ...to, replace: true });
                     })

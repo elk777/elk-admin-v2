@@ -1,5 +1,6 @@
 <template>
 	<div class="sidebar-container" :class="formatSidebar">
+		<logo  :isCollapse="sidebar.collapse" :themeColor="themeConfig.themeColor" />
 		<el-scrollbar style="height: 100%" wrap-class="scrollbar-wrapper">
 			<el-menu
 				router
@@ -41,6 +42,7 @@
 
 <script>
 import Item from "./components/Item.vue";
+import Logo from './components/Logo.vue';
 import SidebarItem from "@/layout/components/Sidebar/components/SidebarItem";
 import { mapGetters } from "vuex";
 import variables from "@/style/variable.module.scss";
@@ -48,6 +50,7 @@ export default {
 	name: "Sidebar",
 	components: {
 		Item,
+		Logo,
 		SidebarItem,
 	},
 	computed: {

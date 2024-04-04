@@ -22,7 +22,11 @@ export default {
         Demo: 'demo',
         Echarts: 'echarts',
         CustomLayout: 'CustomLayout',
-        DesignClarification: 'DesignClarification'
+        DesignClarification: 'DesignClarification',
+        link: 'link',
+		Vue: 'Vue',
+		GitHub: 'GitHub',
+		JueJin: 'xitu-juejin',
     },
     /* 顶部工具栏 */
     toolsMenus: {

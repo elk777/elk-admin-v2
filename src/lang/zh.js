@@ -22,7 +22,11 @@ export default {
 		Demo: 'demo',
 		Echarts: 'echarts',
 		CustomLayout: '自定义展示',
-		DesignClarification: "周报、月报"
+		DesignClarification: "周报、月报",
+		link: '外链',
+		Vue: 'vue',
+		GitHub: 'GitHub仓库',
+		JueJin: '稀土-掘金',
 	},
 	/* 顶部工具栏 */
 	toolsMenus: {

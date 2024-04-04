@@ -5,6 +5,8 @@ import store from "./store";
 
 // 引入分页公共组件
 import Pagination from "@/components/Pagination";
+import ChartView from '@/components/Chart'
+import FooterView from '@/components/Footer'
 // 引入公共函数
 import { formatI18n, resetForm, handleTree } from "./libs/utils/tools";
 // css重置样式
@@ -39,6 +41,8 @@ Vue.prototype.msgInfo = function (msg) {
 };
 // 全局注册公共组件
 Vue.component("Pagination", Pagination);
+Vue.component("ChartView", ChartView);
+Vue.component("FooterView", FooterView);
 
 // 全局注册函数
 Vue.prototype.$formatI18n = formatI18n;

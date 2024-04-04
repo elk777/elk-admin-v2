@@ -13,7 +13,8 @@ const ORIGINAL_THEME = '#409EFF' // 默认 color
 export default {
     data() {
         return {
-            theme: ORIGINAL_THEME
+            theme: ORIGINAL_THEME,
+            chalk: '',
         };
     },
     computed: {
@@ -23,7 +24,7 @@ export default {
     },
     watch: {
         defaultTheme: {
-            handler(val, oldVal) {
+            handler(val) {
                 this.theme = val;
             },
             immediate: true
@@ -31,7 +32,6 @@ export default {
         async theme(val) {
             const oldVal = this.chalk ? this.theme : ORIGINAL_THEME;
             if (typeof val !== "string") return;
-
             const themeCluster = getThemeCluster(val.replace('#', ''));
             const originalCluster = getThemeCluster(oldVal.replace('#', ''));
 
@@ -85,5 +85,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss" scoped></style>

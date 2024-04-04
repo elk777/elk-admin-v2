@@ -1,6 +1,24 @@
+/* el-menu图标-位移偏量 */
+%el-menu-icon-mr12{
+    .el-menu {
+        border: none;
+        .el-menu-item {
+            .svg-icon {
+                margin-right: 12px;
+            }
+        }
+        .el-submenu__title {
+            .svg-icon {
+                margin-right: 12px;
+            }
+        }
+    }
+}
+
 #app {
     /* 侧边menu 样式 */
     .sidebar-vertical-container {
+        @extend %el-menu-icon-mr12;
         width: $sideBarWidth;
         transition: width .28s, background-color .3s;
         height: 100%;
@@ -10,19 +28,7 @@
         z-index: 1001;
         -webkit-box-shadow: 2px 0px 6px rgba(0, 21, 41, .35);
         box-shadow: 2px 0px 6px rgba(0, 21, 41, .35);
-        .el-menu {
-            border: none;
-            .el-menu-item {
-                .svg-icon {
-                    margin-right: 14px;
-                }
-            }
-            .el-submenu__title {
-                .svg-icon {
-                    margin-right: 14px;
-                }
-            }
-        }
+        
         /* element滚动条组件 隐藏水平滚动条 */
         .scrollbar-wrapper {
             overflow-x: hidden !important;
@@ -48,7 +54,6 @@
         margin-left: $sideBarWidth;
         position: relative;
     }
-
     /* 侧边折叠后：手动隐藏title和箭头 */
     .el-menu--collapse {
         .el-submenu__title span {
@@ -83,5 +88,11 @@
     .main-collapse {
         margin-left: 56px;
     }
+}
 
+body {
+     /* 侧边折叠后el-menu图标-位移偏量 */
+     .el-menu--vertical {
+        @extend %el-menu-icon-mr12
+    }
 }
