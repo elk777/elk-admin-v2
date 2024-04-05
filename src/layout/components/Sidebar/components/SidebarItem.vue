@@ -16,59 +16,27 @@
                 :path="route.path">
             </sidebar-item>
         </el-submenu>
-        <el-menu-item v-else :index="formatPath(item)">
-            <Item  :icon="formatItem('icon', item)" :title="formatItem('title', item)" />
-            <!-- <template v-if="!item.meta.isLink" >
-                <router-link :to="{path: 'home'}">
-                    <Item  :icon="formatItem('icon', item)" :title="formatItem('title', item)" />
-                </router-link>
-            </template>
-            <a v-else :href="item.meta.isLink" target="_blank">
-                <Item :icon="formatItem('icon', item)" :title="formatItem('title', item)" />
-            </a> -->
-        </el-menu-item>
+        <link-view v-else :to="formatPath(item)" >
+            <el-menu-item  :index="formatPath(item)">
+                <Item  :icon="formatItem('icon', item)" :title="formatItem('title', item)" />
+            </el-menu-item>
+        </link-view>
 </template>
 
 <script>
 import Item from './Item.vue';
+import LinkView from './Link.vue'
+import mixins from '../mixins'
 export default {
     name: 'SidebarItem',
+    mixins: [mixins],
     props: {
         item: Object,
         path: String
     },
     components: {
-        Item
-    },
-    methods: {
-        /* 格式化item */
-        formatItem(type, item) {
-            // console.log("item",item);
-            if (type === 'multi') {
-                return this.$formatI18n(this,'menus',item);
-            }
-            if (item.children) {
-                if (type === 'icon') {
-                    return item.children[0].meta.icon;
-                }
-                let title = item.children[0].name;
-                return this.$formatI18n(this,'menus',title);
-            } else {
-                if (type === 'icon') {
-                    return item.meta.icon;
-                }
-                let title = item.name;
-                return this.$formatI18n(this,'menus',title);
-            }
-        },
-        /* 格式化path */
-        formatPath(item) {
-            if (item.redirect) {
-                return item.children[0].path
-            }
-            return item.path
-        },
-
-    },
+        Item,
+        LinkView
+    }
 };
 </script>

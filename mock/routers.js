@@ -189,7 +189,7 @@ const routers = [
 		name: "link",
 		path: "/link",
 		icon: "link",
-		link: null,
+		link: "/link",
 		redirect: "noRedirect",
 		children: [
 			{

@@ -72,9 +72,9 @@ const formatRouters = function (routers) {
         routerObj = {
             path: router.link ? router.link : router.path,
             name: router.name,
+            isLink: router.isLink || null,
             meta: {
                 title: router.title,
-                isLink: router.isLink || null,
                 icon: router.icon || '',
                 noCache: router.noCache || false,
                 affix: router.affix || false,
@@ -89,6 +89,7 @@ const formatRouters = function (routers) {
             routerObj.children = formatRouters(router.children)
             routerObj.redirect = router.redirect; 
         }
+        console.log("routerObj", routerObj);
         return routerObj;
     })
 }
