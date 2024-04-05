@@ -88,11 +88,23 @@
     .main-collapse {
         margin-left: 56px;
     }
+
+    /* 侧边栏： horzontal模式 */
+    .horizontal-container {
+        @extend %el-menu-icon-mr12;
+        .el-menu {
+            display: flex;
+        }
+    }
 }
 
 body {
      /* 侧边折叠后el-menu图标-位移偏量 */
      .el-menu--vertical {
+        @extend %el-menu-icon-mr12
+    }
+    /* 侧边栏： horizontal模式 */
+    .el-menu--horizontal {
         @extend %el-menu-icon-mr12
     }
 }

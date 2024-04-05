@@ -3,7 +3,6 @@
         <el-menu
             :default-active="routeMenu"
             mode="horizontal"
-            router
             :text-color="formatClass('text')"
             :background-color="formatClass('bg')"
             :active-text-color="themeConfig.themeColor"
@@ -26,9 +25,11 @@
                     ></sidebar-item>
                 </el-submenu>
                 <template v-else>
-                    <el-menu-item :index="formatPath(item)">
-                        <Item :icon="formatItem('icon', item)" :title="formatItem('title', item)" />
-                    </el-menu-item>
+                    <link-view :to="formatPath(item)">
+                        <el-menu-item :index="formatPath(item)">
+                            <Item :icon="formatItem('icon', item)" :title="formatItem('title', item)" />
+                        </el-menu-item>
+                    </link-view>
                 </template>
             </template>
         </el-menu>
@@ -37,12 +38,16 @@
 <script>
 import Item from './components/Item.vue';
 import SidebarItem from '@/layout/components/Sidebar/components/SidebarItem';
+import LinkView from './components/Link.vue'
 import variables from '@/style/variable.module.scss';
+import mixins from './mixins'
 export default {
     name: 'Horizontal',
+    mixins: [mixins],
     components: {
         Item,
-        SidebarItem
+        SidebarItem,
+        LinkView
     },
     computed: {
         // 当前路由路径
@@ -78,31 +83,24 @@ export default {
     },
     methods: {
         /* 格式化item */
-        formatItem(type, item) {
-            if (type === 'multi') {
-                return this.$formatI18n(this,'menus',item);
-            }
-            if (item.children) {
-                if (type === 'icon') {
-                    return item.children[0].meta.icon;
-                }
-                let title = item.children[0].name;
-                return this.$formatI18n(this,'menus',title);
-            } else {
-                if (type === 'icon') {
-                    return item.meta.icon;
-                }
-                let title = item.name;
-                return this.$formatI18n(this,'menus',title);
-            }
-        },
-        /* 格式化path */
-        formatPath(item) {
-            if (item.redirect) {
-                return item.children[0].path
-            }
-            return item.path
-        },
+        // formatItem(type, item) {
+        //     if (type === 'multi') {
+        //         return this.$formatI18n(this,'menus',item);
+        //     }
+        //     if (item.children) {
+        //         if (type === 'icon') {
+        //             return item.children[0].meta.icon;
+        //         }
+        //         let title = item.children[0].name;
+        //         return this.$formatI18n(this,'menus',title);
+        //     } else {
+        //         if (type === 'icon') {
+        //             return item.meta.icon;
+        //         }
+        //         let title = item.name;
+        //         return this.$formatI18n(this,'menus',title);
+        //     }
+        // }
     },
 };
 </script>

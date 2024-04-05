@@ -60,7 +60,6 @@ const actions = {
     }
 */
 const formatRouters = function (routers) {
-    // console.log("过滤前的路由",routers);
     let routerObj = {
         path: '',
         component: '',
@@ -89,7 +88,6 @@ const formatRouters = function (routers) {
             routerObj.children = formatRouters(router.children)
             routerObj.redirect = router.redirect; 
         }
-        console.log("routerObj", routerObj);
         return routerObj;
     })
 }
