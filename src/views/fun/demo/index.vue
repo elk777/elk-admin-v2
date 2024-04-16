@@ -1,7 +1,7 @@
 <template>
 	<div class="layout-container demo-container">
-		<el-card shadow="hover" header="demo" style="height: 1000px">
-			<div style="margin-bottom: 20px">模拟下拉框多数据加载过慢问题</div>
+		<el-card shadow="hover" header="虚拟列表、直播视频流播放" style="height: 1000px">
+			<div style="margin-bottom: 20px">虚拟列表</div>
 			<virtua-list-scroll :dataList="dataList" :defaultValue="value"></virtua-list-scroll>
 			<!-- <div style="margin-top: 20px">
 				<h3>直播视频流播放</h3>
@@ -21,10 +21,8 @@ import VirtualListScroll from "@/components/VirtualListScroll/index.vue";
 // import cx from '../../../../public/cs.flv'
 import mpegts from "mpegts.js";
 import flvjs from "flv.js";
-import { Mixins } from "./demo";
 export default {
 	name: "Demo",
-	mixins: [Mixins],
 	components: {
 		"virtua-list-scroll": VirtualListScroll,
 	},
@@ -46,9 +44,9 @@ export default {
 
 		this.getList();
 		console.log("开始");
+		return;
 		if (flvjs.isSupported()) {
 			//检查当前浏览器是否支持 flv.js
-			// var videoElement = document.getElementById(this.d.id);
 			const videoElement = this.$refs.videoRef;
 			console.log("进入了", videoElement);
 
@@ -72,10 +70,10 @@ export default {
 	},
 	beforeDestroy() {
 		if (this.flvPlayer) {
-			this.flvPlayer.pause();
-			this.flvPlayer.unload();
-			this.flvPlayer.detachMediaElement();
-			this.flvPlayer.destroy();
+			// this.flvPlayer.pause();
+			// this.flvPlayer.unload();
+			// this.flvPlayer.detachMediaElement();
+			// this.flvPlayer.destroy();
 			this.flvPlayer = null;
 		}
 	},

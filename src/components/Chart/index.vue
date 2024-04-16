@@ -6,16 +6,21 @@
 
 <script>
 import * as echarts from 'echarts/core';
-import { TooltipComponent, LegendComponent } from 'echarts/components';
-import { PieChart } from 'echarts/charts';
-import { LabelLayout } from 'echarts/features';
+import { TooltipComponent, LegendComponent,GridComponent,TitleComponent } from 'echarts/components';
+import { PieChart,LineChart,BarChart } from 'echarts/charts';
+import { LabelLayout,UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 echarts.use([
   TooltipComponent,
   LegendComponent,
+  GridComponent,
+  TitleComponent,
   PieChart,
+  LineChart,
+  BarChart,
   CanvasRenderer,
-  LabelLayout
+  LabelLayout,
+  UniversalTransition
 ]);
 export default {
   name: 'Chart',
