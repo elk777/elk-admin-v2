@@ -1,8 +1,8 @@
 /*
  * @Author: elk LYF_elk@163.com@qq.com
  * @Date: 2023-10-26 14:17:26
- * @LastEditors: elk LYF_elk@163.com@qq.com
- * @LastEditTime: 2024-04-04 19:23:47
+ * @LastEditors: elk 
+ * @LastEditTime: 2025-05-08 15:07:04
  * @FilePath: /vue2_project/src/libs/permission/permissionRouter.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%
  */
@@ -36,7 +36,7 @@ const whiteList = ['/login'];     // 白名单
 router.beforeEach((to, from, next) => {
     NProgress.start();
     const token = store.getters.token,
-        roles = store.getters.roles;
+    roles = store.getters.roles;
     if (token) {
         if (to.path === '/login') {
             next({ path: '/' });
@@ -47,7 +47,7 @@ router.beforeEach((to, from, next) => {
                     store.dispatch("GenerateRouter").then(res => {
                         // 添加routers
                         // console.log("router-res", res);
-                        router.addRoutes(res); 
+                        res.data && router.addRoutes(res); 
                         next({ ...to, replace: true });
                     })
                 }).catch(err => {

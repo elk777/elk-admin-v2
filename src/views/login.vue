@@ -72,8 +72,11 @@ export default {
 							this.$router.push({ path: this.redirect || "/" }).catch(() => {});
 						})
                         .catch( err => {
-                            this.loading = false;
+							console.log("🚀 ~ this.$refs.loginForm.validate ~ err:", err)
                         })
+						.finally(() => {
+							this.loading = false;
+						});
 				}
 			});
 		},

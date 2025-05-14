@@ -13,11 +13,18 @@
 					type="success"
 					icon="el-icon-folder-add"
 					@click="handelAdd"
+					:disabled="selectionLength()"
 					>新增角色</el-button
 				>
 			</div>
 
-			<el-table v-loading="loading" :data="roleList">
+			<el-table
+				ref="multipleTable"
+				v-loading="loading"
+				:data="roleList"
+				@selection-change="handleSelectionChange"
+			>
+				<el-table-column type="selection" width="55"> </el-table-column>
 				<el-table-column
 					prop="roleName"
 					label="角色名称"
@@ -81,20 +88,52 @@ export default {
 				pageSize: 10,
 			},
 			roleList: [],
+			checked: [],
 		};
 	},
 
 	mounted() {
 		this.getList();
 	},
+	computed: {
+		// 获取选中的行数
+		selectionLength(type) {
+			console.log("🚀 ~ selectionLength ~ type:", type)
+			return (type) => {
+				if (type == "radio") {
+					return !(this.checked.length === 1);
+				} else if (type == "checkbox") {
+					return !(this.checked.length > 0);
+				}
+				return false;
+			};
+		},
+	},
 
 	methods: {
+		toggleSelection(rows) {
+			if (rows) {
+				rows.forEach((row) => {
+					this.$refs.multipleTable.toggleRowSelection(row);
+				});
+			} else {
+				this.$refs.multipleTable.clearSelection();
+			}
+		},
+
+		handleSelectionChange(val) {
+			console.log("🚀 ~ val:", val);
+			this.checked = val;
+		},
 		/* 获取角色列表 */
 		getList() {
 			this.loading = true;
 			listRole(this.queryParams).then((res) => {
 				this.total = res.data.length;
 				this.roleList = res.data;
+				this.$nextTick(() => {
+					this.toggleSelection([res.data[0]]);
+				});
 				this.loading = false;
 			});
 		},

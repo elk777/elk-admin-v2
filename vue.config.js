@@ -28,7 +28,7 @@ module.exports = {
 	// 开发环境下开启eslint代码检测
 	lintOnSave: process.env.NODE_ENV === "development",
 	devServer: {
-		host: "0.0.0.0",
+		host: "127.0.0.1",
 		port: port,
 		open: true,
 		// webSocketServer: true,

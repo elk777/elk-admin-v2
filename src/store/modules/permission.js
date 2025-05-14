@@ -27,6 +27,7 @@ const actions = {
     async GenerateRouter({ commit }) {
         try {
             const routers = await getRouters();
+            console.log("🚀 ~ GenerateRouter ~ routers:", routers)
             const rdata = JSON.parse(JSON.stringify(routers.data));
             const sdata = JSON.parse(JSON.stringify(routers.data));
             const formatRdata = formatRouters(rdata);

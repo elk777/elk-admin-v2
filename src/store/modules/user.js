@@ -1,3 +1,11 @@
+/*
+ * @Author: elk
+ * @Date: 2023-05-26 16:57:52
+ * @LastEditors: elk 
+ * @LastEditTime: 2025-04-24 16:58:29
+ * @FilePath: /vue2_project/src/store/modules/user.js
+ * @Description: 文件内容描述语
+ */
 // 用户信息模块
 
 import { login, getUserInfo, logout } from "@/api/login";
@@ -47,6 +55,7 @@ const actions = {
 			commit("SET_TOKEN", loginData.data.token);
 			return loginData;
 		} catch (error) {
+			console.log("🚀 ~ Login ~ error:", error)
 			// return new Error(error);
 			return Promise.reject(error);
 		}
@@ -70,6 +79,7 @@ const actions = {
 		// 获取用户的基本信息： 姓名、头像、角色列表、按钮权限列表
 		try {
 			const userInfo = await getUserInfo(state.token);
+			console.log("🚀 ~ GetInfo ~ userInfo:", userInfo)
 			const { name, avatar, roles, permissions } = userInfo.data;
 			if (roles && roles.length > 0) {
 				commit("SET_ROLES", roles);

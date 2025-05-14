@@ -1,3 +1,11 @@
+/*
+ * @Author: elk
+ * @Date: 2023-12-14 09:11:40
+ * @LastEditors: elk 
+ * @LastEditTime: 2025-03-25 15:07:36
+ * @FilePath: /vue2_project/src/api/system/user.js
+ * @Description: 文件内容描述语
+ */
 import request from "@/libs/utils/request";
 
 const apis = {

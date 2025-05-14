@@ -47,7 +47,7 @@ service.interceptors.response.use(
 		const res = response.data,
 			code = res.code || 200,
 			msg = errorCode[code] || res.msg || errorCode['default'];
-		if (code === 401) {
+		if (code === 1004 || code === 1003) {
 			MessageBox.confirm("登录状态已过期！请重新登陆哦", "系统提示", {
 				confirmButtonText: "重新登陆",
 				cancelButtonText: "取消",

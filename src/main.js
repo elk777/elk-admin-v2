@@ -1,3 +1,11 @@
+/*
+ * @Author: elk
+ * @Date: 2023-05-26 16:57:52
+ * @LastEditors: elk 
+ * @LastEditTime: 2025-04-27 15:15:18
+ * @FilePath: /vue2_project/src/main.js
+ * @Description: 文件内容描述语
+ */
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -50,7 +58,7 @@ Vue.prototype.$resetForm = resetForm;
 Vue.prototype.$handleTree = handleTree;
 
 // 使用Mockjs
-import "../mock/index";
+// import "../mock/index";
 
 // 引入svg插件
 import "@/assets/icons/index";
