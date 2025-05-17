@@ -1,9 +1,9 @@
 /*
  * @Author: elk
  * @Date: 2023-05-26 16:57:52
- * @LastEditors: elk 
- * @LastEditTime: 2025-04-27 15:15:18
- * @FilePath: /vue2_project/src/main.js
+ * @LastEditors: lyf
+ * @LastEditTime: 2025-05-16 16:48:17
+ * @FilePath: \elk-admin-web\src\main.js
  * @Description: 文件内容描述语
  */
 import Vue from "vue";

@@ -74,7 +74,7 @@
 import { listRole, getRole, delRole } from "@/api/system/role";
 import UserDialog from "./dialog";
 export default {
-	name: "Role",
+	name: "role",
 	components: {
 		UserDialog,
 	},

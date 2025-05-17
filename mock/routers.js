@@ -13,7 +13,7 @@ const routers = [
 			{
 				id: Mock.Random.increment(),
 				title: "菜单管理",
-				name: "Menu",
+				name: "menu",
 				path: "menu",
 				icon: "menu",
 				link: "/system/menu",

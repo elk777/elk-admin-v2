@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Autor: lyf
+ * @Date: 2025-05-14 14:10:16
+ * @LastEditors: lyf
+ * @LastEditTime: 2025-05-16 16:44:56
+ * @FilePath: \elk-admin-web\src\lang\en.js
+ */
 import enLocale from 'element-ui/lib/locale/lang/en';
 
 export default {
@@ -5,28 +13,28 @@ export default {
     menus: {
         Index: 'home',
         system: 'system',
-        Menu: 'systemMenu',
-        User: 'systemUser',
-        Role: 'systemRole',
-        Dept: 'systemDept',
-        Dic: 'systemDic',
+        menu: 'systemMenu',
+        user: 'systemUser',
+        role: 'systemRole',
+        dept: 'systemDept',
+        dic: 'systemDic',
         fun: "function",
-        Editor: "Editor",
-        Print: "print",
-        Cropper: "cropper",
+        editor: "Editor",
+        print: "print",
+        cropper: "cropper",
         Preview: "preview",
-        Qrcode: "qrcode",
-        Uploading: "uploading",
-        Download: "download",
-        UserProfile: 'UserProfile',
-        Demo: 'demo',
-        Echarts: 'echarts',
-        CustomLayout: 'CustomLayout',
-        DesignClarification: 'DesignClarification',
+        qrcode: "qrcode",
+        uploading: "uploading",
+        download: "download",
+        userProfile: 'UserProfile',
+        demo: 'demo',
+        echarts: 'echarts',
+        customLayout: 'CustomLayout',
+        designClarification: 'DesignClarification',
         link: 'link',
-		Vue: 'Vue',
-		GitHub: 'GitHub',
-		JueJin: 'xitu-juejin',
+		vue: 'Vue',
+		github: 'GitHub',
+		jueJin: 'xitu-juejin',
     },
     /* 顶部工具栏 */
     toolsMenus: {

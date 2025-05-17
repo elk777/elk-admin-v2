@@ -27,7 +27,6 @@ const actions = {
     async GenerateRouter({ commit }) {
         try {
             const routers = await getRouters();
-            console.log("🚀 ~ GenerateRouter ~ routers:", routers)
             const rdata = JSON.parse(JSON.stringify(routers.data));
             const sdata = JSON.parse(JSON.stringify(routers.data));
             const formatRdata = formatRouters(rdata);
@@ -94,9 +93,8 @@ const formatRouters = function (routers) {
 }
 // 路由懒加载配置
 const loadView = function (view) {
-    return (resolve) => require([`@/views${view}/index`], resolve)
+    return (resolve) => require([`@/views${view}`], resolve)
 }
-
 export default {
     state,
     mutations,

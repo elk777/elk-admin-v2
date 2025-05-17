@@ -55,7 +55,7 @@
 import DeptDialog from "./dialog.vue";
 import { listDept, getDept, delDept } from "@/api/system/dept";
 export default {
-	name: "Dept",
+	name: "dept",
 	components: {
 		DeptDialog,
 	},

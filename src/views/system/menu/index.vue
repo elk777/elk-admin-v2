@@ -68,7 +68,7 @@ import { listMenu, getMenu, delMenu } from "@/api/system/menu";
 import { listDic } from "@/api/system/dic";
 import MenuDialog from "./dialog";
 export default {
-	name: "Menu",
+	name: "menu",
 	components: {
 		MenuDialog,
 	},

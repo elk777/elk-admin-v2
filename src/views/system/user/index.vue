@@ -78,7 +78,7 @@
 import { listUser, getUser, delUser } from "@/api/system/user";
 import UserDialog from "./dialog";
 export default {
-	name: "User",
+	name: "user",
 	components: {
 		UserDialog,
 	},

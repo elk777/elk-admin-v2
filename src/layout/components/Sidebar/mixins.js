@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Autor: lyf
+ * @Date: 2025-05-14 14:10:16
+ * @LastEditors: lyf
+ * @LastEditTime: 2025-05-16 16:35:34
+ * @FilePath: \elk-admin-web\src\layout\components\Sidebar\mixins.js
+ */
 
 export default {
     methods: {

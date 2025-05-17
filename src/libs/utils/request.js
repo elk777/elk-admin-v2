@@ -7,7 +7,7 @@ import errorCode from "./errorCode";
 // 创建axios实例
 const service = axios.create({
 	// baseURL: process.env.VUE_APP_BASE_URL + process.env.VUE_APP_BASE_API,
-	timeout: 5000,
+	timeout: 50000,
 });
 
 // 请求拦截器

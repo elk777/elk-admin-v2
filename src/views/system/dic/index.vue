@@ -54,7 +54,7 @@ import { listDic, getDic, delDic } from "@/api/system/dic";
 import DicDialog from "./dialog";
 
 export default {
-	name: "Dic",
+	name: "dic",
 	components: {
 		DicDialog,
 	},
