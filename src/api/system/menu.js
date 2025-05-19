@@ -3,9 +3,9 @@ import request from "@/libs/utils/request";
 const apis = {
 	listMenu: "/system/menu/list",
 	getMenu: "/system/menu/",
-	addMenu: "/system/addmenu",
-	updateMenu: "/system/updatemenu",
-	delMenu: "/system/delmenu/",
+	addMenu: "/system/addMenu",
+	updateMenu: "/system/menu",
+	delMenu: "/system/menu/"
 };
 /* 获取菜单列表信息 */
 function listMenu(params) {

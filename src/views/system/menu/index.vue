@@ -80,7 +80,7 @@ export default {
 			loading: false,
 			queryParams: {
 				pageNum: 1,
-				pageSize: 10,
+				pageSize: 10000,
 			},
 			total: 100,
 		};
