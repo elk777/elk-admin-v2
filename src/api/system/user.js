@@ -1,9 +1,9 @@
 /*
  * @Author: elk
  * @Date: 2023-12-14 09:11:40
- * @LastEditors: elk 
- * @LastEditTime: 2025-03-25 15:07:36
- * @FilePath: /vue2_project/src/api/system/user.js
+ * @LastEditors: lyf
+ * @LastEditTime: 2025-05-19 20:26:18
+ * @FilePath: \elk-admin-web\src\api\system\user.js
  * @Description: 文件内容描述语
  */
 import request from "@/libs/utils/request";
@@ -12,8 +12,8 @@ const apis = {
 	listUser: "/system/user/list",
 	getUser: "/system/user/",
 	addUser: "/system/adduser",
-	updateUser: "/system/updateuser",
-	delUser: "/system/deluser/",
+	updateUser: "/system/user",
+	delUser: "/system/user/",
 };
 
 /* 获取菜单列表信息 */

@@ -32,7 +32,7 @@
 					show-overflow-tooltip
 				></el-table-column>
 				<el-table-column
-					prop="roleLable"
+					prop="roleLabel"
 					label="角色标识"
 					align="center"
 					show-overflow-tooltip
@@ -98,7 +98,6 @@ export default {
 	computed: {
 		// 获取选中的行数
 		selectionLength(type) {
-			console.log("🚀 ~ selectionLength ~ type:", type)
 			return (type) => {
 				if (type == "radio") {
 					return !(this.checked.length === 1);
@@ -120,9 +119,7 @@ export default {
 				this.$refs.multipleTable.clearSelection();
 			}
 		},
-
 		handleSelectionChange(val) {
-			console.log("🚀 ~ val:", val);
 			this.checked = val;
 		},
 		/* 获取角色列表 */

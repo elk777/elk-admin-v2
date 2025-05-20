@@ -8,8 +8,8 @@
 					</el-form-item>
 				</el-col>
 				<el-col :span="12">
-					<el-form-item label="角色标识" prop="roleLable">
-						<el-input v-model="form.roleLable" placeholder="请输入角色标识" />
+					<el-form-item label="角色标识" prop="roleLabel">
+						<el-input v-model="form.roleLabel" placeholder="请输入角色标识" />
 					</el-form-item>
 				</el-col>
 				<el-col :span="12">
@@ -65,7 +65,7 @@ export default {
 			loading: false,
 			rules: {
 				roleName: [{ required: true, message: "请输入角色名称", trigger: "blur" }],
-				roleLable: [{ required: true, message: "请输入角色标识", trigger: "blur" }],
+				roleLabel: [{ required: true, message: "请输入角色标识", trigger: "blur" }],
 				orderNum: [{ required: true, message: "请输入排序", trigger: "blur" }],
 			},
 			menuData: [],
@@ -111,7 +111,7 @@ export default {
 			this.form = {
 				roleId: null,
 				roleName: null,
-				roleLable: null,
+				roleLabel: null,
 				orderNum: 0,
 				status: 1,
 				roleKey: null,

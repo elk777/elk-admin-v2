@@ -15,8 +15,6 @@ export default {
 		let { value } = binding,                // 拿到指令绑定的值
 		all_permission = "*:*:*",          // 代表全部权限「admin」
 		permissions = store.getters.permissions;  // 当前账号按钮权限列表
-		console.log("🚀 ~ value:", value)
-		console.log("🚀 ~ permissions:", permissions)
 		
 		if (value && value instanceof Array && value.length > 0) {
 			const permissionFlag = value;
