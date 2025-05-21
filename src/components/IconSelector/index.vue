@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Autor: lyf
+ * @Date: 2025-05-14 14:10:16
+ * @LastEditors: lyf
+ * @LastEditTime: 2025-05-21 19:49:48
+ * @FilePath: \elk-admin-web\src\components\IconSelector\index.vue
+-->
 <template>
 	<div class="icon-selector">
 		<el-input v-model="iconInput" placeholder="请选择图标" @focus="focusInput" @blur="blurInput">
@@ -29,6 +37,7 @@ export default {
 	watch: {
 		iconName: {
 			handler(val) {
+				console.log("🚀 ~ handler ~ val:", val)
 				if (val !== "default") {
 					this.iconInput = val;
 					this.iconSvg = val;
@@ -60,6 +69,7 @@ export default {
 		getIcon(name) {
 			this.iconInput = name;
 			this.iconSvg = name;
+			this.$emit("getIconName", name);
 		},
 	},
 };

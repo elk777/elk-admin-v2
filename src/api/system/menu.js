@@ -1,9 +1,17 @@
+/*
+ * @Description: 
+ * @Autor: lyf
+ * @Date: 2025-05-14 14:10:16
+ * @LastEditors: lyf
+ * @LastEditTime: 2025-05-21 19:12:38
+ * @FilePath: \elk-admin-web\src\api\system\menu.js
+ */
 import request from "@/libs/utils/request";
 
 const apis = {
 	listMenu: "/system/menu/list",
 	getMenu: "/system/menu/",
-	addMenu: "/system/addMenu",
+	addMenu: "/system/menu/create",
 	updateMenu: "/system/menu",
 	delMenu: "/system/menu/"
 };
