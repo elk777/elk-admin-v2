@@ -11,9 +11,9 @@ import request from "@/libs/utils/request";
 const apis = {
     listRole: "/system/role/list",
     getRole: "/system/role/",
-    addRole: "/system/addrole",
+    addRole: "/system/role/create",
     updateRole: "/system/role",
-    delRole: "/system/role",
+    delRole: "/system/role/",
 };
 /* 获取角色列表 */
 function listRole(params) {
@@ -47,11 +47,10 @@ function updateRole(data) {
     });
 }
 /* 删除角色 */
-function delRole(data) {
+function delRole(id) {
     return request({
-        url: apis.delRole,
+        url: apis.delRole + id,
         method: "delete",
-        data,
     });
 }
 export { listRole, getRole, addRole, updateRole, delRole };
