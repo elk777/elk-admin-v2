@@ -24,8 +24,8 @@
 				<el-table-column prop="orderNum" label="排序" align="center" show-overflow-tooltip />
 				<el-table-column prop="status" label="部门状态" align="center">
 					<template slot-scope="scope">
-						<el-tag :type="scope.row.status ? 'default' : 'danger'">{{
-							scope.row.status ? "启用" : "停用"
+						<el-tag :type="Number(scope.row.status) ? 'default' : 'danger'">{{
+							Number(scope.row.status) ? "启用" : "停用"
 						}}</el-tag>
 					</template>
 				</el-table-column>

@@ -47,7 +47,7 @@
 				</el-col>
 				<el-col :span="12">
 					<el-form-item label="部门状态" prop="status">
-						<el-switch :active-value="1" :inactive-value="0" v-model="form.status" />
+						<el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.status" />
 					</el-form-item>
 				</el-col>
 				<el-col :span="24">
@@ -101,7 +101,7 @@ export default {
 		/* 上级菜单选择事件 */
 		handelCascader(val) {
 			console.log("上级菜单选择事件数值1：", val);
-			this.form.parentId = val[0];
+			this.form.parentId = val[val.length - 1];
 		},
 		cancel() {
 			this.open = false;

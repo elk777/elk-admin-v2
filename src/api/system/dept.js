@@ -1,11 +1,19 @@
+/*
+ * @Description: 
+ * @Autor: lyf
+ * @Date: 2025-05-14 14:10:16
+ * @LastEditors: lyf
+ * @LastEditTime: 2025-05-23 14:19:51
+ * @FilePath: \elk-admin-web\src\api\system\dept.js
+ */
 import request from "@/libs/utils/request";
 
 const apis = {
 	listDept: "/system/dept/list",
 	getDept: "/system/dept/",
-	addDept: "/system/adddept",
-	updateDept: "/system/updatedept",
-	delDept: "/system/deldept/",
+	addDept: "/system/dept",
+	updateDept: "/system/dept",
+	delDept: "/system/dept/",
 };
 /* 获取部门列表 */
 function listDept(params) {
