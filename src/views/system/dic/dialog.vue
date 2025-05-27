@@ -3,13 +3,13 @@
 		<el-form ref="form" :model="form" :rules="rules" label-width="85px">
 			<el-row>
 				<el-col :span="12">
-					<el-form-item label="字典名称" prop="dicName">
-						<el-input v-model="form.dicName" placeholder="请输入字典名称"></el-input>
+					<el-form-item label="字典名称" prop="dictName">
+						<el-input v-model="form.dictName" placeholder="请输入字典名称"></el-input>
 					</el-form-item>
 				</el-col>
 				<el-col :span="12">
-					<el-form-item label="字典类型" prop="dicType">
-						<el-input v-model="form.dicType" placeholder="请输入字典类型"></el-input>
+					<el-form-item label="字典类型" prop="dictType">
+						<el-input v-model="form.dictType" placeholder="请输入字典类型"></el-input>
 					</el-form-item>
 				</el-col>
 				<el-col :span="24">
@@ -68,8 +68,8 @@ export default {
 			open: false,
 			form: {},
 			rules: {
-				dicName: [{ required: true, message: "字典名称不能为空", trigger: "blur" }],
-				dicType: [{ required: true, message: "字典类型不能为空", trigger: "blur" }],
+				dictName: [{ required: true, message: "字典名称不能为空", trigger: "blur" }],
+				dictType: [{ required: true, message: "字典类型不能为空", trigger: "blur" }],
 			},
 			loading: false,
 		};
@@ -92,9 +92,9 @@ export default {
 		/* 重置form表单 */
 		reset() {
 			this.form = {
-				dicId: null,
-				dicName: null,
-				dicType: null,
+				dictID: null,
+				dictName: null,
+				dictType: null,
 				dicData: [],
 				status: 1,
 				remark: null,
@@ -123,7 +123,7 @@ export default {
 				if (valid) {
 					console.log("发送的dicForm", this.form);
 					this.loading = true;
-					if (this.form.dicId != null) {
+					if (this.form.dictID != null) {
 						updateDic(this.form).then((res) => {
 							this.loading = false;
 							this.open = false;

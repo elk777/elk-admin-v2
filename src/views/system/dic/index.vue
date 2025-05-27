@@ -14,8 +14,8 @@
 			</div>
 
 			<el-table v-loading="loading" :data="dicList">
-				<el-table-column prop="dicName" label="字典名称" align="center" show-overflow-tooltip />
-				<el-table-column prop="dicType" label="字典类型" align="center" show-overflow-tooltip />
+				<el-table-column prop="dictName" label="字典名称" align="center" show-overflow-tooltip />
+				<el-table-column prop="dictType" label="字典类型" align="center" show-overflow-tooltip />
 				<el-table-column prop="status" label="字典状态" align="center">
 					<template slot-scope="scope">
 						<el-tag :type="scope.row.status ? 'default' : 'danger'">{{
@@ -95,7 +95,7 @@ export default {
 		/* 修改 */
 		handleUpdate(row) {
 			const dicdialog = this.$refs.dicdialog;
-			getDic(row.dicId).then((res) => {
+			getDic(row.dictID).then((res) => {
 				dicdialog.title = "修改字典";
 				dicdialog.open = true;
 				dicdialog.form = res.data;
@@ -103,13 +103,13 @@ export default {
 		},
 		/* 删除 */
 		handleDelete(row) {
-			this.$confirm(`将删除字典名称为${row.dicName}的数据`, "警告", {
+			this.$confirm(`将删除字典名称为${row.dictName}的数据`, "警告", {
 				confirmButtonText: "确定",
 				cancelButtonText: "取消",
 				type: "warning",
 			})
 				.then(() => {
-					return delDic(row.dicId);
+					return delDic(row.dictID);
 				})
 				.then(() => {
 					this.getList();
