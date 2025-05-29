@@ -26,11 +26,11 @@
 					</el-form-item>
 				</el-col>
 				<el-col :span="12">
-					<el-form-item label="部门" prop="deptIds">
+					<el-form-item label="部门" prop="deptId">
 						<!-- <el-input v-model="form.deptName" placeholder="请输入部门" /> -->
 						<el-cascader
 							style="width: 100%"
-							:value="form.deptIds"
+							:value="form.deptId"
 							:props="{ checkStrictly: true, value: 'deptId', label: 'deptName' }"
 							:options="depts"
 							@change="handelCascader"
@@ -52,19 +52,19 @@
 				<el-col :span="12">
 					<el-form-item label="性别" prop="sex">
 						<el-select style="width: 100%" v-model="form.sex" placeholder="请选择性别">
-							<el-option v-for="sex in dics" :key="sex.dicName" :label="sex.label" :value="sex.value">
+							<el-option v-for="sex in dics" :key="sex.dictLabel" :label="sex.dictLabel" :value="sex.dictValue">
 							</el-option>
 						</el-select>
 					</el-form-item>
 				</el-col>
-				<el-col :span="12">
+				<el-col v-if="title === '新增用户'" :span="12">
 					<el-form-item label="用户密码" prop="password">
 						<el-input v-model="form.password" placeholder="请输入用户密码" show-password />
 					</el-form-item>
 				</el-col>
 				<el-col :span="12">
 					<el-form-item label="用户状态" prop="status">
-						<el-switch :active-value="1" :inactive-value="0" v-model="form.status" />
+						<el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.status" />
 					</el-form-item>
 				</el-col>
 				<el-col :span="24">
@@ -85,7 +85,7 @@
 import { addUser, updateUser } from "@/api/system/user";
 import { listRole } from "@/api/system/role";
 import { listDept } from "@/api/system/dept";
-import { getDic } from "@/api/system/dic";
+import { getDicData } from "@/api/system/dic";
 export default {
 	name: "UserDialog",
 	data() {
@@ -113,10 +113,10 @@ export default {
 		async getAllList() {
 			const roleData = await listRole();
 			const deptData = await listDept();
-			const dicData = await getDic("sys_user_sex");
+			const dicData = await getDicData({ dicType: "sys_user_sex" });
 			this.roles = roleData.data;
 			this.depts = this.$handleTree(deptData.data, "deptId");
-			this.dics = dicData.data.dicData;
+			this.dics = dicData.data;
 		},
 		/* 重置form */
 		reset() {
@@ -125,7 +125,7 @@ export default {
 				userName: null,
 				nickName: null,
 				roleIds: null,
-				deptIds: null,
+				deptId: null,
 				phone: null,
 				email: null,
 				sex: null,
@@ -137,7 +137,7 @@ export default {
 		},
 		handelCascader(val) {
 			console.log("用户管理：上级菜单选择事件数值：", val);
-			this.form.deptIds = [...val];
+			this.form.deptId = [...val];
 		},
 		/* 提交表单取消按钮 */
 		cancel() {
@@ -147,6 +147,10 @@ export default {
 		/* 提交表单确定按钮 */
 		submitForm() {
 			console.log("用户管理：form", this.form);
+			let deptId = this.form.deptId;
+			if(deptId && deptId.length > 0) {
+				this.form.deptId = deptId.join(",");
+			}
 			this.$refs["form"].validate((valid) => {
 				this.loading = true;
 				if (valid) {
