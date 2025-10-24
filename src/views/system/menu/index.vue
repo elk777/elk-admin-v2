@@ -43,6 +43,7 @@
           prop="orderNum"
           label="排序"
           align="center"
+          :sortable="true"
         ></el-table-column>
         <el-table-column
           prop="perms"

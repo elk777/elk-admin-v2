@@ -27,6 +27,11 @@ export default {
 		vue: 'vue',
 		github: 'GitHub仓库',
 		jueJin: '稀土-掘金',
+		lowCode: '低代码管理',
+		metadata:'元数据管理',
+		datalist: '列表管理',
+		dataform: '表单管理',
+		affair: '事务管理',
 	},
 	/* 顶部工具栏 */
 	toolsMenus: {

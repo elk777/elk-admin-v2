@@ -2,9 +2,9 @@
  * @Description: 
  * @Autor: lyf
  * @Date: 2025-05-14 14:10:16
- * @LastEditors: lyf
- * @LastEditTime: 2025-05-16 16:44:56
- * @FilePath: \elk-admin-web\src\lang\en.js
+ * @LastEditors: elk 
+ * @LastEditTime: 2025-10-23 21:56:08
+ * @FilePath: /vue2_project/src/lang/en.js
  */
 import enLocale from 'element-ui/lib/locale/lang/en';
 
@@ -12,12 +12,14 @@ export default {
     /* 侧边导航栏 */
     menus: {
         Index: 'home',
+        // 系统管理
         system: 'system',
         menu: 'systemMenu',
         user: 'systemUser',
         role: 'systemRole',
         dept: 'systemDept',
         dic: 'systemDic',
+        // 功能管理
         fun: "function",
         editor: "Editor",
         print: "print",
@@ -31,10 +33,17 @@ export default {
         echarts: 'echarts',
         customLayout: 'CustomLayout',
         designClarification: 'DesignClarification',
+        // 外链
         link: 'link',
 		vue: 'Vue',
 		github: 'GitHub',
 		jueJin: 'xitu-juejin',
+        // 低代码管理
+        lowCode: 'lowCode',
+        metadata:'metadata',
+        datalist: 'datalist',
+        dataform: 'dataform',
+        affair: 'affair',
     },
     /* 顶部工具栏 */
     toolsMenus: {

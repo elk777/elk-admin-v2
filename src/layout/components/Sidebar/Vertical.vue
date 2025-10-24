@@ -1,7 +1,15 @@
+<!--
+ * @Author: elk
+ * @Date: 2023-10-30 10:44:53
+ * @LastEditors: elk 
+ * @LastEditTime: 2025-10-23 22:14:40
+ * @FilePath: /vue2_project/src/layout/components/Sidebar/Vertical.vue
+ * @Description: 侧边垂直布局
+-->
 <template>
 	<div class="sidebar-container" :class="formatSidebar">
 		<logo  :isCollapse="sidebar.collapse" :themeColor="themeConfig.themeColor" />
-		<el-scrollbar style="height: 100%" wrap-class="scrollbar-wrapper">
+		<el-scrollbar :style="{ height: 'calc(100% - 51px)'}" wrap-class="scrollbar-wrapper">
 			<!-- router -->
 			<el-menu
 				:default-active="routeMenu"

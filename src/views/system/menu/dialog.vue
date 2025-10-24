@@ -202,16 +202,16 @@ export default {
     /* 提交表单事件 */
     submitForm() {
       console.log("form", this.form);
-
       this.$refs["form"].validate((valid) => {
         if (valid) {
           this.loading = true;
           if (this.form.menuId != null || undefined) {
             updateMenu(this.form).then((res) => {
-              this.loading = false;
               this.open = false;
               this.msgSuccess("修改成功");
               this.$emit("getList");
+            }).finally(() => {
+              this.loading = false;
             });
           } else {
             addMenu(this.form).then((res) => {
@@ -219,6 +219,8 @@ export default {
               this.open = false;
               this.msgSuccess("新增成功");
               this.$emit("getList");
+            }).finally(() => {
+              this.loading = false;
             });
           }
         }

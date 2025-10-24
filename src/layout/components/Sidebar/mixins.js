@@ -2,9 +2,9 @@
  * @Description: 
  * @Autor: lyf
  * @Date: 2025-05-14 14:10:16
- * @LastEditors: lyf
- * @LastEditTime: 2025-05-16 16:35:34
- * @FilePath: \elk-admin-web\src\layout\components\Sidebar\mixins.js
+ * @LastEditors: elk 
+ * @LastEditTime: 2025-10-23 22:25:13
+ * @FilePath: /vue2_project/src/layout/components/Sidebar/mixins.js
  */
 
 export default {
@@ -14,6 +14,8 @@ export default {
          * @return {*}
          */
         formatItem(type, item) {
+            console.log("🚀 ~ type:", type)
+            console.log("🚀 ~ item:", item)
             if (type === 'multi') {
                 return this.$formatI18n(this,'menus',item);
             }
