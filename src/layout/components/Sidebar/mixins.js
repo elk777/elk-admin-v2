@@ -3,7 +3,7 @@
  * @Autor: lyf
  * @Date: 2025-05-14 14:10:16
  * @LastEditors: elk 
- * @LastEditTime: 2025-10-23 22:25:13
+ * @LastEditTime: 2025-10-25 12:58:03
  * @FilePath: /vue2_project/src/layout/components/Sidebar/mixins.js
  */
 
@@ -14,8 +14,6 @@ export default {
          * @return {*}
          */
         formatItem(type, item) {
-            console.log("🚀 ~ type:", type)
-            console.log("🚀 ~ item:", item)
             if (type === 'multi') {
                 return this.$formatI18n(this,'menus',item);
             }
