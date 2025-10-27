@@ -2,7 +2,7 @@
  * @Author: elk
  * @Date: 2025-10-25 14:23:52
  * @LastEditors: elk 
- * @LastEditTime: 2025-10-26 22:54:46
+ * @LastEditTime: 2025-10-27 20:01:55
  * @FilePath: /vue2_project/src/views/lowcode/metadata/config.vue
  * @Description: 元数据配置
 -->
@@ -31,27 +31,27 @@
 				<el-table-column type="index" label="序号" width="50"></el-table-column>
 				<el-table-column label="是否主键"  width="85">
 					<template slot-scope="scope">
-						<el-switch v-model="scope.row.isPrimaryKey"></el-switch>
+						<el-switch :disabled="scope.row.isDefault" v-model="scope.row.isPrimaryKey"></el-switch>
 					</template>
 				</el-table-column>
 				<el-table-column label="字段英文" >
 					<template slot-scope="scope">
-                        <EditableCell :value="scope.row.filedEn" :editStatus="scope.row.editStatus">
-                            <el-input v-model="scope.row.filedEn"></el-input>
+                        <EditableCell :value="scope.row.filedEn" :prop="'filedEn'" :tableIndex="scope.$index" :isDefault="scope.row.isDefault">
+                            <!-- <el-input v-model="scope.row.filedEn"></el-input> -->
                         </EditableCell>
 					</template>
 				</el-table-column>
 				<el-table-column label="字段中文" >
 					<template slot-scope="scope">
-                        <EditableCell @save="save" :prop="'filedZh'" :tableIndex="scope.$index" :value="scope.row.filedZh" :editStatus="scope.row.editStatus">
+                        <EditableCell @save="save" :prop="'filedZh'" :tableIndex="scope.$index" :value="scope.row.filedZh" :isDefault="scope.row.isDefault">
                             <!-- <el-input v-model="scope.row.filedZh"></el-input> -->
                         </EditableCell>
 					</template>
 				</el-table-column>
                 <el-table-column label="字段类型" >
                     <template slot-scope="scope">
-                        <EditableCell :value="scope.row.filedType" :editStatus="scope.row.editStatus">
-                            <el-select v-model="scope.row.filedType" placeholder="请选择字段类型">
+                        <EditableCell :value="scope.row.filedType">
+                            <el-select :disabled="scope.row.isDefault" v-model="scope.row.filedType" placeholder="请选择字段类型">
                                 <el-option
                                     v-for="item in filedTypes"
                                     :key="item.value"
@@ -64,18 +64,23 @@
                 </el-table-column>
 				<el-table-column label="字段长度" >
 					<template v-slot:default="scope">
-                        <EditableCell :value="scope.row.filedLength"  :editStatus="scope.row.editStatus">
-                            <el-input :value="255" v-model="scope.row.filedLength"></el-input>
+                        <EditableCell :value="scope.row.filedLength">
+                            <el-input-number :disabled="scope.row.isDefault" :min="0" controls-position="right" :value="255" v-model="scope.row.filedLength"></el-input-number>
                         </EditableCell>
 					</template>
 				</el-table-column>
-				<el-table-column label="精度长度" >
+				<el-table-column label="精度长度">
 					<template slot-scope="scope">
-                        <EditableCell :value="scope.row.precision" :editStatus="scope.row.editStatus">
-                            <el-input-number :min="0" controls-position="right" v-model="scope.row.precision"></el-input-number>
+                        <EditableCell :value="scope.row.precision">
+                            <el-input-number :disabled="precisionEdit(scope.row)" :min="0" controls-position="right" v-model="scope.row.precision"></el-input-number>
                         </EditableCell>
 					</template>
 				</el-table-column>
+                <el-table-column  width="60" align="center">
+                    <template slot-scope="scope">
+                        <el-button @click="handleFiledDelete(scope.row)" :disabled="scope.row.isDefault" type="danger" icon="el-icon-delete" circle></el-button>
+                    </template>
+                </el-table-column>
 			</el-table>
 		</div>
 		<div slot="footer">
@@ -101,7 +106,8 @@ export default {
 					filedZh: "主键",
 					filedType: "int",
 					filedLength: "11",
-                    precision: 10
+                    precision: 100,
+                    isDefault: true
 				},
 			],
             filedTypes: [
@@ -126,13 +132,33 @@ export default {
 			loading: false,
 		};
 	},
+    computed: {
+        // 精度编辑框
+        precisionEdit() {
+            return (row) => {
+                if( row.isDefault || row.filedType !== "number") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+    },
 
 	mounted() {},
 
 	methods: {
+        /**
+         * @description: 关闭弹窗
+         * @return {*}
+         */
 		cancel() {
 			this.open = false;
 		},
+        /**
+         * @description: 新增字段
+         * @return {*}
+         */
 		handelAdd() {
             this.metalist.push({
                 isPrimaryKey: false,
@@ -141,19 +167,30 @@ export default {
                 filedType: "varchar",
                 filedLength: "255",
                 precision: 0,
-                editStatus: true
+                isDefault: false
             })
         },
 		submitForm() {
             console.log("🚀 ~ this.metalist:", this.metalist)
         },
+        /**
+         * @description: 保存字段
+         * @param {*} value 字段值
+         * @param {*} index 索引
+         * @param {*} prop  字段属性
+         * @return {*}
+         */
         save(value, index, prop) {
-            console.log("🚀 ~ prop:", prop)
-            console.log("🚀 ~ index:", index)
-            console.log("🚀 ~ value:", value)
             this.metalist[index][prop] = value;
-            console.log("🚀 ~ value:", value)
         },
+        /**
+         * @description: 删除字段
+         * @param {*} row
+         * @return {*}
+         */
+        handleFiledDelete(row) {
+
+        }
 	},
 };
 </script>

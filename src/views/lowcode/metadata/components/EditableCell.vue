@@ -2,17 +2,19 @@
  * @Author: elk
  * @Date: 2025-10-26 15:02:57
  * @LastEditors: elk 
- * @LastEditTime: 2025-10-26 22:50:23
+ * @LastEditTime: 2025-10-27 19:26:51
  * @FilePath: /vue2_project/src/views/lowcode/metadata/components/EditableCell.vue
  * @Description: 可编辑单元格组件
 -->
 <template>
 	<div class="editable-cell">
-		<span v-if="!editStatus">{{ value }} : {{ tableIndex }}</span>
+		<!-- <span v-if="!isDefault">{{ value }}</span> -->
 		<!-- 这个标签使用的是插槽 -->
-		<!-- <slot v-else /> -->
-		<slot v-else>
+		<!-- <slot v-else>
 			<el-input v-model="currentValue" @blur="save" @keyup.enter.native="save" ref="input"></el-input>
+		</slot> -->
+		<slot>
+			<el-input :disabled="isDefault" v-model="currentValue" @blur="save" @keyup.enter.native="save" ref="input"></el-input>
 		</slot>
 	</div>
 </template>
@@ -36,14 +38,14 @@ export default {
 			default: "",
 		},
         // 是否处于编辑状态
-		editStatus: {
+		isDefault: {
 			type: Boolean,
 			default: false,
 		},
 	},
 	data() {
 		return {
-			// editStatus: false,
+			// isDefault: false,
 			currentValue: this.value,
 		};
 	},
