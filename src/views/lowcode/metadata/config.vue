@@ -2,7 +2,7 @@
  * @Author: elk
  * @Date: 2025-10-25 14:23:52
  * @LastEditors: elk 
- * @LastEditTime: 2025-10-27 20:01:55
+ * @LastEditTime: 2025-10-29 19:13:12
  * @FilePath: /vue2_project/src/views/lowcode/metadata/config.vue
  * @Description: 元数据配置
 -->
@@ -36,7 +36,7 @@
 				</el-table-column>
 				<el-table-column label="字段英文" >
 					<template slot-scope="scope">
-                        <EditableCell :value="scope.row.filedEn" :prop="'filedEn'" :tableIndex="scope.$index" :isDefault="scope.row.isDefault">
+                        <EditableCell @save="save" :value="scope.row.filedEn" :prop="'filedEn'" :tableIndex="scope.$index" :isDefault="scope.row.isDefault">
                             <!-- <el-input v-model="scope.row.filedEn"></el-input> -->
                         </EditableCell>
 					</template>
@@ -189,7 +189,27 @@ export default {
          * @return {*}
          */
         handleFiledDelete(row) {
-
+            if(row.isDefault) {
+                this.$message({
+                    message: "默认字段不能删除",
+                    type: "warning",
+                });
+                return;
+            }
+            this.$confirm(`将删除字段${row.filedEn}-${row.filedZh}`, "警告", {
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                type: "warning",
+            })
+            .then(() => {
+                this.metalist.splice(this.metalist.indexOf(row), 1);
+            })
+            .catch(() => {
+                this.$message({
+                    message: "删除已取消",
+                    type: "info",
+                });
+            });
         }
 	},
 };

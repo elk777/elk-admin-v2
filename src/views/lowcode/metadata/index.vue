@@ -2,7 +2,7 @@
  * @Author: elk
  * @Date: 2025-10-25 12:33:37
  * @LastEditors: elk 
- * @LastEditTime: 2025-10-26 18:37:29
+ * @LastEditTime: 2025-10-29 19:41:39
  * @FilePath: /vue2_project/src/views/lowcode/metadata/index.vue
  * @Description: 元数据管理
 -->
@@ -25,7 +25,7 @@
 				>
 			</div>
 
-            <el-table v-loading="loading" :data="dicList">
+            <el-table v-loading="loading" :data="lowcodeList">
 				<el-table-column prop="metaId" label="元数据ID" align="center" show-overflow-tooltip />
 				<el-table-column prop="metaName" label="元数据名称" align="center" show-overflow-tooltip />
 				<el-table-column prop="metaLabel" label="元数据标识" align="center" show-overflow-tooltip />
@@ -71,7 +71,7 @@ export default {
 		return {
 			val: '',
             loading: false,
-            dicList: [
+            lowcodeList: [
                 {
                     metaId: '1232323232323232',
                     metaName: '列表管理',
