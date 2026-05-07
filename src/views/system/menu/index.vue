@@ -153,6 +153,7 @@ export default {
     getList() {
       this.loading = true;
       listMenu(this.queryParams).then((res) => {
+        console.log("this---",this);
         const { data } = res;
         const tree = this.$handleTree(data);
         this.menuList = tree;

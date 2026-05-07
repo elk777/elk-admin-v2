@@ -45,7 +45,7 @@
 			/>
 		</el-card>
 
-		<DicDialog ref="dicdialog" @getList="getList" />
+		<DicDialog class="selfClass" ref="dicdialog" @getList="getList" />
 	</div>
 </template>
 
@@ -123,4 +123,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+	.selfClass {
+		::v-deep .el-dialog__body {
+			max-height: 500px !important;
+		}
+	}
+</style>

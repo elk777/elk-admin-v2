@@ -2,7 +2,7 @@
  * @Author: elk
  * @Date: 2025-10-29 19:23:34
  * @LastEditors: elk 
- * @LastEditTime: 2025-10-29 20:03:01
+ * @LastEditTime: 2026-03-24 10:23:06
  * @FilePath: /vue2_project/src/views/lowcode/datalist/index.vue
  * @Description: 列表管理
 -->
@@ -100,7 +100,7 @@ export default {
 			console.log("列表管理");
 		},
 		handelSearch() {
-			console.log(this.searchText);
+			console.log(this.val);
 		},
 		handelAdd() {
             this.$refs.dataDialog.open = true;

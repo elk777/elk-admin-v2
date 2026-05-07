@@ -51,7 +51,7 @@ module.exports = {
                     changeOrigin: true, // 是否允许跨域
                     pathRewrite: {
                         // 路径重写`
-                        ["^" + process.env.VUE_APP_BASE_FILE_URL]: "",
+                        ["^" + process.env.VUE_APP_BASE_FILE_API]: "",
                     },
                 },
             // disableHostCheck: true,

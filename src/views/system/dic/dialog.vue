@@ -151,4 +151,9 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="scss" scoped>
+.mainDialog ::v-deep .el-dialog__body {
+	max-height: 100px !important;
+	overflow-y: auto;
+}
+</style>

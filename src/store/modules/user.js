@@ -1,9 +1,9 @@
 /*
  * @Author: elk
  * @Date: 2023-05-26 16:57:52
- * @LastEditors: lyf
- * @LastEditTime: 2025-05-17 15:38:33
- * @FilePath: \elk-admin-web\src\store\modules\user.js
+ * @LastEditors: elk 
+ * @LastEditTime: 2026-04-24 15:33:16
+ * @FilePath: /vue2_project/src/store/modules/user.js
  * @Description: 文件内容描述语
  */
 // 用户信息模块

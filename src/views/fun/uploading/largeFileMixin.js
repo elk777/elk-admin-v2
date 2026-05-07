@@ -39,20 +39,22 @@ export const Mixins = {
 				})
 				.catch((err) => {
 					console.log("合并错误", err);
-				}).finally( () => {
+				})
+				.finally(() => {
 					this.onLoading("Chunk", false);
-                })
+				});
 		},
 		/* 大文件切片上传 自定义 */
 		async onUploadChunk() {
 			const file = this.file;
 			// let index = 0;
 			try {
-				let HASH = await calTimeSliceHash(file),
-					chunks = fileSection(file,undefined,HASH),
-					alreadyData = await uploadAlready({ hash: HASH }),
-					alreadys = alreadyData.data.chunkList,
-					filterChunk = filterChunks(alreadys, chunks, true);
+				let HASH = await calTimeSliceHash(file);
+				let chunks = fileSection(file, undefined, HASH);
+				let alreadyData = await uploadAlready({ hash: HASH });
+				let alreadys = alreadyData.fileList;
+				let filterChunk = filterChunks(alreadys, chunks, true);
+				console.log("🚀 ~ filterChunk:", filterChunk)
 				this.hash = HASH;
 				// 保存已上传切片，回显上传进度
 				this.alreadyChunks = filterChunks(alreadys, chunks, false);
@@ -64,6 +66,7 @@ export const Mixins = {
 					formdata.append("hash", HASH);
 					return { formdata, idx };
 				});
+				console.log("🚀 ~ chunkAll:", chunkAll)
 				await this.concurrenceRequest(chunkAll, 3);
 			} catch (error) {
 				this.onLoading("Chunk", false);
@@ -93,9 +96,9 @@ export const Mixins = {
 					// 任务执行
 					while (idx < len && max > 0) {
 						max--; // 占用通道
-                        let formdata = chunkAll[idx].formdata;
-                        let index = chunkAll[idx].idx;
-                        idx++;
+						let formdata = chunkAll[idx].formdata;
+						let index = chunkAll[idx].idx;
+						idx++;
 						// 发送请求
 						uploadChunk(formdata, {
 							callback: ({ loaded, total }) => {
@@ -107,15 +110,15 @@ export const Mixins = {
 								});
 							},
 						}).then(() => {
-                            max++; // 释放通道
-                            count++;
+							max++; // 释放通道
+							count++;
 							if (count === len) {
 								this.complete(chunkAll.length);
-                                resolve();
+								resolve();
 							} else {
 								taskQueue();
 							}
-						})
+						});
 					}
 				};
 				taskQueue();
