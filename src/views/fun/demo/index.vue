@@ -12,12 +12,15 @@
 				</div>
 				<button @click="playVideo">播放视频</button>
 			</div> -->
+			<div style="margin-top: 20px">虚拟列表-自制</div>
+			<virtualList />
 		</el-card>
 	</div>
 </template>
 
 <script>
 import VirtualListScroll from "@/components/VirtualListScroll/index.vue";
+import virtualList from "./VirtuaList/index.vue";
 // import cx from '../../../../public/cs.flv'
 import mpegts from "mpegts.js";
 import flvjs from "flv.js";
@@ -25,6 +28,7 @@ export default {
 	name: "Demo",
 	components: {
 		"virtua-list-scroll": VirtualListScroll,
+		"virtualList": virtualList,
 	},
 	data() {
 		return {
@@ -39,7 +43,6 @@ export default {
 	},
 
 	mounted() {
-
 		/* set */
 
 		this.getList();

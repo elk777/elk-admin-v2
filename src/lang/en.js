@@ -3,7 +3,7 @@
  * @Autor: lyf
  * @Date: 2025-05-14 14:10:16
  * @LastEditors: elk 
- * @LastEditTime: 2025-10-23 21:56:08
+ * @LastEditTime: 2026-05-08 19:32:37
  * @FilePath: /vue2_project/src/lang/en.js
  */
 import enLocale from 'element-ui/lib/locale/lang/en';
@@ -31,8 +31,8 @@ export default {
         userProfile: 'UserProfile',
         demo: 'demo',
         echarts: 'echarts',
-        customLayout: 'CustomLayout',
-        designClarification: 'DesignClarification',
+        custom: 'Custom',
+        report: 'Report',
         // 外链
         link: 'link',
 		vue: 'Vue',

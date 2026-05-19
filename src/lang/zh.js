@@ -1,3 +1,11 @@
+/*
+ * @Author: elk
+ * @Date: 2026-05-08 19:13:06
+ * @LastEditors: elk 
+ * @LastEditTime: 2026-05-08 19:32:28
+ * @FilePath: /vue2_project/src/lang/zh.js
+ * @Description: 文件内容描述语
+ */
 import zhLocale from "element-ui/lib/locale/lang/zh-CN";
 
 export default {
@@ -21,8 +29,8 @@ export default {
 		userProfile: '个人中心',
 		demo: 'demo',
 		echarts: 'echarts',
-		customLayout: '自定义展示',
-		designClarification: "周报、月报",
+		custom: '自定义展示',
+		report: "周报、月报",
 		link: '外链',
 		vue: 'vue',
 		github: 'GitHub仓库',

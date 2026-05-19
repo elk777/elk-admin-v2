@@ -13,7 +13,7 @@ const routers = [
 			{
 				id: Mock.Random.increment(),
 				title: "菜单管理",
-				name: "menu",
+				name: "Menu",
 				path: "menu",
 				icon: "menu",
 				link: "/system/menu",
@@ -71,26 +71,26 @@ const routers = [
 		link: null,
 		redirect: "noRedirect",
 		children: [
-			// {
-			// 	id: Mock.Random.increment(),
-			// 	title: "周报、月报",
-			// 	name: "DesignClarification",
-			// 	path: "report",
-			// 	icon: "menu",
-			// 	link: "/fun/report",
-			// 	affix: false,
-			// 	noCache:false
-			// },
-			// {
-			// 	id: Mock.Random.increment(),
-			// 	title: "自定义展示",
-			// 	name: "CustomLayout",
-			// 	path: "custom",
-			// 	icon: "menu",
-			// 	link: "/fun/custom",
-			// 	affix: false,
-			// 	noCache:false
-			// },
+			{
+				id: Mock.Random.increment(),
+				title: "周报、月报",
+				name: "DesignClarification",
+				path: "report",
+				icon: "menu",
+				link: "/fun/report",
+				affix: false,
+				noCache:false
+			},
+			{
+				id: Mock.Random.increment(),
+				title: "自定义展示",
+				name: "CustomLayout",
+				path: "custom",
+				icon: "menu",
+				link: "/fun/custom",
+				affix: false,
+				noCache:false
+			},
 			{
 				id: Mock.Random.increment(),
 				title: "echarts",

@@ -461,7 +461,11 @@ export default {
 			// console.log("this.manageData", manageData);
 			// return;
 
-			this.manageShow = false;
+			this.manageData = manageData;
+			this.isManNull = true;
+			this.manageShow = true;
+
+			// this.manageShow = false;
 			getEvaluationList(cahData)
 				.then((res) => {
 					if (res.data.length !== 0) {
@@ -543,14 +547,14 @@ export default {
 			let cahData = {
 				checkDate: this.dateval,
 			};
-			this.examineShow = false;
-			// this.examineShow = true;
+			// this.examineShow = false;
+			this.examineShow = true;
 
 			getCheckList(cahData)
 				.then((res) => {
 					if (res.data.length !== 0) {
 						this.examineData = res.data;
-						console.log("res",res);
+						console.log("res", res);
 					}
 					this.examineShow = true;
 				})
@@ -725,7 +729,7 @@ export default {
 					formdata.append("file", this.fileList[0].type ? this.fileList[0] : null);
 					formdata.append(
 						"imgUrl",
-						this.fileList[0].type ? null : this.fileList[0].url.match(/8999(\S*)/)[1]
+						this.fileList[0].type ? null : this.fileList[0].url.match(/8999(\S*)/)[1],
 					);
 				}
 				formdata.append("id", uploadData.id);
